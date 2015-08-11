@@ -167,8 +167,7 @@ task 'publish:gh-pages', 'publish build to gh-pages', (options) ->
   gulp = require('gulp')
   gh_pages = require('gulp-gh-pages')
 
-  gulp.src("build/web/**/*.*")
-  .pipe(gh_pages())
+  gulp.src("./build/web/**/*.*").pipe(gh_pages())
 
 ###
  * version bump
