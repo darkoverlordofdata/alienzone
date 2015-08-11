@@ -1,0 +1,13 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea
+build/lib
+build/web
+node_modules
+packages
+tools/compiler.jar
+web/frameworks
+!web/frameworks/runtime-src/proj.android-studio/app/res
+!web/frameworks/runtime-src/proj.android-studio/app/src
+!web/frameworks/runtime-src/proj.android-studio/app/AndroidManifest.xml
+npm-debug.log
+

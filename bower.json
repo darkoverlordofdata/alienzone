@@ -1,0 +1,39 @@
+{
+  "name": "alienzone",
+  "version": "0.0.1",
+  "authors": [
+    "darkoverlordofdata <darkoverlordofdata@gmail.com>"
+  ],
+  "description": "Space Crystal Match3 Puzzle",
+  "license": "gplv3",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "tmp",
+    "build",
+    "node_modules",
+    "packages",
+    "src",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ash": "git://github.com/darkoverlordofdata/ash.coffee",
+    "localstoragedb": "~2.3.1",
+    "jmatch3": "git://github.com/hugeen/jmatch3",
+    "tween.ts": "~0.1.2"
+  },
+  "devDependencies": {
+    "closure-compiler": "~0.2.7"
+  },
+  "install": {
+    "ignore": ["box2d", "closure-compiler", "cocoonjs", "stats.js"],
+    "path": "web/src",
+    "sources": {
+      "ash": "packages/ash/build/ash.js",
+      "jmatch3": "packages/jmatch3/jmatch3.js",
+      "localstoragedb": "packages/localstoragedb/localstoragedb.js",
+      "tween.ts": "packages/tween.ts/build/tween.min.js" 
+    }
+  }
+}
