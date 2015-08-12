@@ -125,27 +125,34 @@ task 'postbuild:update', 'update cocos2d project file', (options) ->
   fs.writeFileSync('./build/web/project.json', JSON.stringify(project))
   
 ###
- * manifest appcache
+ * preandroid make
  *
- * write the apcache manifest file
+ * before build step
+ * re-write the build script
 ###
-task 'manifest:appcache', 'write the appcache manifest', (options) ->
+task 'preandroid:make', 'compile app to android project', (options) ->
 
-  gulp = require('gulp')
-  manifest = require('gulp-manifest')
+  options.compile ?= 'WHITESPACE_ONLY'
 
-  gulp.src(["build/web/**/*.*"])
-  .pipe(manifest(
-      hash: true
-      timestamp: true
-      preferOnline: false
-      network: ['*']
-      filename: 'manifest.appcache'
-      exclude: 'manifest.appcache'
-    ))
-  .pipe(gulp.dest("build/web"))
+  files = getCocos2dFiles(false).join(' LF ')
+  c0 = """
+    cp -f lib/src/cclib-rt.js web/src/alienzone/cclib-rt.js
+    cp -f web/main.js ./web/frameworks/runtime-src/proj.android-studio/app/assets/main.js
+    cp -f web/project_android.json ./web/frameworks/runtime-src/proj.android-studio/app/assets/project.json
+  """.split('\n').join(' && ')
 
-
+  if options.compile?
+    c1 = "cat #{files} | java -jar tools/compiler.jar --warning_level=QUIET --compilation_level #{options.compile} --js_output_file ./web/frameworks/runtime-src/proj.android-studio/app/assets/alienzone.js"
+  else
+    c1 = """
+      cp -fr web/src ./web/frameworks/runtime-src/proj.android-studio/app/assets/src
+    """.split('\n').join(' && ')
+     
+  project = require('./package.json')  
+  
+  project['scripts']['android'] = "#{c0} && #{c1}"
+  require('fs').writeFileSync('./package.json', JSON.stringify(project, null, '  '))
+  
 ###
  * get patch
  *
@@ -156,18 +163,6 @@ task 'get:patch', 'get dependencies from bower repository', (options) ->
   patch "web/src/jmatch3/jmatch3.js", "tools/patch/jmatch3.js.patch"
   patch "web/src/tween.ts/tween.min.js", "tools/patch/tween.min.js.patch"
 
-
-###
- * publish gh-pages
- *
- * publish to github gh-pages
-###
-task 'publish:gh-pages', 'publish build to gh-pages', (options) ->
-
-  gulp = require('gulp')
-  gh_pages = require('gulp-gh-pages')
-
-  gulp.src("./build/web/**/*.*").pipe(gh_pages())
 
 ###
  * version bump
@@ -239,6 +234,6 @@ getCocos2dFiles = (standalone=false) ->
   for file in cocos2d.jsList
     files.push("./web/#{file}")
 
-  files.push("./web/main.js")
+  files.push("./web/main.js") unless standalone
   return files
 

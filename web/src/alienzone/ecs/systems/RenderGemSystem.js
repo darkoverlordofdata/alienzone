@@ -1,4 +1,4 @@
-var __extends = (this && this.__extends) || function (d, b) {
+var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
@@ -41,10 +41,7 @@ var RenderGemSystem = (function (_super) {
          * @param {Nodes.GroupNode} node
          */
         this.addToDisplay = function (node) {
-            //console.log(node.display.graphic.__instanceId);
-            //console.log(node.entity);
             _this.parent.addChild(node.display.graphic);
-            //console.log('------------------------');
         };
         /**
          * Remove From Display

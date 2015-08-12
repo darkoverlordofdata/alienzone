@@ -1,4 +1,4 @@
-var __extends = (this && this.__extends) || function (d, b) {
+var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
@@ -42,7 +42,6 @@ var Game = (function (_super) {
      */
     Game.prototype.ctor = function () {
         this._super();
-        console.log('fred');
         Reg.init(this.leaderboard, this.score);
         var engine = this.engine = new ash.core.Engine();
         var factory = new Entities(this, engine);

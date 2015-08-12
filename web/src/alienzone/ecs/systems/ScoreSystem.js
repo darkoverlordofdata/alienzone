@@ -1,4 +1,4 @@
-var __extends = (this && this.__extends) || function (d, b) {
+var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
@@ -48,8 +48,8 @@ var ScoreSystem = (function (_super) {
          * @param {number} points
          */
         this.scored = function (points) {
-            console.log('powerup = powerup' + (points % Reg.SFX_COUNT));
-            console.log('resource =' + Reg.res('powerup' + (points % Reg.SFX_COUNT)));
+            cc.log('powerup = powerup' + (points % Reg.SFX_COUNT));
+            cc.log('resource =' + Reg.res('powerup' + (points % Reg.SFX_COUNT)));
             if (Reg.sfx) {
                 cc.audioEngine.playEffect(Reg.res('powerup' + (points % Reg.SFX_COUNT)));
             }
