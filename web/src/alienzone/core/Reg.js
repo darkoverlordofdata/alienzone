@@ -41,20 +41,24 @@ var Reg = (function () {
          * Load texture cache
          *
          */
-        var texture;
-        var frame;
-        var c;
-        var c1;
-        texture = cc.textureCache.addImage(res.game_legend_png);
-        for (c = 0, c1 = 0; c < 8; c++, c1 += 24) {
-            frame = new cc.SpriteFrame(texture, cc.rect(c1, 0, 24, 24));
-            cc.spriteFrameCache.addSpriteFrame(frame, 'legend' + c);
-        }
-        texture = cc.textureCache.addImage(res.game_gems_png);
-        for (c = 0, c1 = 0; c < 8; c++, c1 += 48) {
-            frame = new cc.SpriteFrame(texture, cc.rect(c1, 0, 48, 48));
-            cc.spriteFrameCache.addSpriteFrame(frame, 'gem' + c);
-        }
+        // var texture;
+        // var frame;
+        // var sprite:cc.Sprite;
+        // var c;
+        // var c1;
+        cc.spriteFrameCache.addSpriteFrames("res/images.plist");
+        // sprite = new cc.Sprite('#legend.png');
+        // texture = sprite.getTexture();
+        // for (c=0, c1=0; c<8; c++, c1+=24) {
+        //     frame = new cc.SpriteFrame(texture, cc.rect(c1, 0, 24, 24));
+        //     cc.spriteFrameCache.addSpriteFrame(frame, 'legend'+c);
+        // }
+        // sprite = new cc.Sprite('#gems.png');
+        // texture = sprite.getTexture();
+        // for (c=0, c1=0; c<8; c++, c1+=48) {
+        //     frame = new cc.SpriteFrame(texture, cc.rect(c1, 0, 48, 48));
+        //     cc.spriteFrameCache.addSpriteFrame(frame, 'gem'+c);
+        // }
     };
     /**
      * Initialize a new game
@@ -121,38 +125,6 @@ var Reg = (function () {
      */
     Reg.res = function (path) {
         switch (path) {
-            case 'opendyslexic': return res.opendyslexic;
-            case 'title_png': return res.title_png;
-            case 'infinity_png': return res.infinity_png;
-            case 'ftl_png': return res.ftl_png;
-            case 'gamesAchievements_png': return res.gamesAchievements_png;
-            case 'gamesController_png': return res.gamesController_png;
-            case 'gamesLeaderboards_png': return res.gamesLeaderboards_png;
-            case 'instructions_png': return res.instructions_png;
-            case 'sfx_option_png': return res.sfx_option_png;
-            case 'music_option_png': return res.music_option_png;
-            case 'instructions_back_png': return res.instructions_back_png;
-            case 'instructions_logo_png': return res.instructions_logo_png;
-            case 'instructions_scores.png': return res.instructions_scores_png;
-            case 'game_back_png': return res.game_back_png;
-            case 'game_slots_png': return res.game_slots_png;
-            case 'game_gems_png': return res.game_gems_png;
-            case 'game_legend_png': return res.game_legend_png;
-            case 'game_down_png': return res.game_down_png;
-            case 'game_left_png': return res.game_left_png;
-            case 'game_right_png': return res.game_right_png;
-            case 'game_lrot_png': return res.game_lrot_png;
-            case 'game_rrot_png': return res.game_rrot_png;
-            case 'achievements_back_png': return res.achievements_back_png;
-            case 'achievements_logo_png': return res.achievements_logo_png;
-            case 'achievements_scores.png': return res.achievements_scores_png;
-            case 'leaderboards_back_png': return res.leaderboards_back_png;
-            case 'leaderboards_logo_png': return res.instructions_logo_png;
-            case 'leaderboards_scores.png': return res.instructions_scores_png;
-            case 'controller_back_png': return res.controller_back_png;
-            case 'controller_logo_png': return res.controller_logo_png;
-            case 'controller_scores.png': return res.controller_scores_png;
-            case 'controller_google_png': return res.controller_google_png;
             case 'powerup0': return res.powerup0;
             case 'powerup1': return res.powerup1;
             case 'powerup2': return res.powerup2;
@@ -173,6 +145,9 @@ var Reg = (function () {
             case 'powerup17': return res.powerup17;
             case 'powerup18': return res.powerup18;
             case 'powerup19': return res.powerup19;
+            case 'opendyslexic': return res.opendyslexic;
+            case 'images_png': return res.images_png;
+            case 'images_plist': return res.images_plist;
             default: return '';
         }
     };

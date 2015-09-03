@@ -628,7 +628,7 @@ declare module cc {
     class SpriteFrameCache{
         static purgeSharedSpriteFrameCache(): SpriteFrameCache;
         addSpriteFrame(frame: SpriteFrame, frameName: string);
-        addSpriteFrames(plist: string, texture:Texture2D);
+        addSpriteFrames(plist: string, texture?:Texture2D);
         addSpriteFramesWithJson(jsonData: Object);
         getSpriteFrame(name: string): SpriteFrame;
         removeSpriteFrameByName(name: string);
@@ -4809,7 +4809,7 @@ declare module cc {
      * aSprite.initWithFile("HelloHTML5World.png",cc.rect(0,0,480,320));
      */
     export class Sprite extends Node {
-        constructor(fileName?: string, rect?: Rect, rotated?: boolean);
+        constructor(fileName?: string|Texture2D, rect?: Rect, rotated?: boolean);
         setOpacityModifyRGB(modify:boolean);
         setOpacity(opacity : number);
         getOpacity():number;

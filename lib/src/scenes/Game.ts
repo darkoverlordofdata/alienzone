@@ -47,7 +47,7 @@ class Game extends CCLayer {
          */
 
         factory.createScore(160, 430, 'Score');
-        factory.createImage(142, 264, res.game_slots_png, 100);
+        factory.createImage(142, 264, 'slots.png', 100);
         factory.createLegend(296, 360, 'legend', 0, 255);
         factory.createLegend(296, 328, 'legend', 1, 255);
         factory.createLegend(296, 296, 'legend', 2, 255);
@@ -61,7 +61,7 @@ class Game extends CCLayer {
         factory.createInput(124,   25, 'right',  player);
         factory.createInput(244,   25, 'lrot',   player);
         factory.createInput(294,   25, 'rrot',   player);
-        factory.createButton(280, 470, res.game_back_png, this.onBack, this);
+        factory.createButton(280, 470, 'back.png', this.onBack, this);
         switch (this.leaderboard) {
             case GameType.Unlimited:
                 factory.createText(160, 460, 'InfinitY', 24, cc.color.YELLOW);

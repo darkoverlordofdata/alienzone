@@ -41,9 +41,9 @@ class Achievements extends CCLayer {
          * create the background
          */
 
-        factory.createButton(280, 470, res.achievements_back_png, this.onBack, this);
-        factory.createImage(160, 240, res.achievements_scores_png, 150);
-        factory.createImage(75, 420, res.achievements_logo_png);
+        factory.createButton(280, 470, 'back.png', this.onBack, this);
+        factory.createImage(160, 240, 'scores.png', 150);
+        factory.createImage(75, 420, 'd16a.png');
         factory.createText(160, 350, 'Awards', 24, cc.color.WHITE);
         factory.createText(160, 40, 'Alien Zone v'+VERSION, 24, cc.color.YELLOW);
         factory.createText(160, 20, "© Copyright 2014 Dark Overlord of Data", 12, cc.color.WHITE);

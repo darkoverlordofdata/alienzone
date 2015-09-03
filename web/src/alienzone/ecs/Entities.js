@@ -111,7 +111,8 @@ var Entities = (function () {
      */
     Entities.prototype.createImage = function (x, y, path, opacity) {
         if (opacity === void 0) { opacity = 255; }
-        var sprite = new cc.Sprite(path);
+        //var sprite = new cc.Sprite(path);
+        var sprite = new cc.Sprite("#" + path);
         sprite.setOpacityModifyRGB(true);
         sprite.setOpacity(opacity);
         var entity = new Entity('image')
@@ -131,9 +132,9 @@ var Entities = (function () {
      * @return {ash.core.Entity}
      */
     Entities.prototype.createButton = function (x, y, path, onClick, context) {
-        var backNormal = new cc.Sprite(path);
-        var backSelected = new cc.Sprite(path);
-        var backDisabled = new cc.Sprite(path);
+        var backNormal = new cc.Sprite("#" + path);
+        var backSelected = new cc.Sprite("#" + path);
+        var backDisabled = new cc.Sprite("#" + path);
         var back = new cc.MenuItemSprite(backNormal, backSelected, backDisabled, onClick, context);
         var backMenu = new cc.Menu(back);
         var entity = new Entity('button')
@@ -153,8 +154,7 @@ var Entities = (function () {
      * @return {ash.core.Entity}
      */
     Entities.prototype.createLegend = function (x, y, frame, level, alpha) {
-        var sprite = new cc.Sprite();
-        sprite.initWithSpriteFrameName(frame + level);
+        var sprite = new cc.Sprite("#" + Entities.COLORS[level] + "2.png");
         sprite.setOpacity(alpha);
         var legend = new Entity('legend')
             .add(new Display(sprite))
@@ -174,10 +174,9 @@ var Entities = (function () {
      * @return {ash.core.Entity}
      */
     Entities.prototype.createInput = function (x, y, action, player) {
-        var path = "res/Game/" + action + ".png";
-        var inputNormal = new cc.Sprite(path);
-        var inputSelected = new cc.Sprite(path);
-        var inputDisabled = new cc.Sprite(path);
+        var inputNormal = new cc.Sprite("#" + action + ".png");
+        var inputSelected = new cc.Sprite("#" + action + ".png");
+        var inputDisabled = new cc.Sprite("#" + action + ".png");
         var inputItem = new cc.MenuItemSprite(inputNormal, inputSelected, inputDisabled, function () { player.command = action; });
         var sprite = new cc.Menu(inputItem);
         var input = new Entity('input')
@@ -198,8 +197,7 @@ var Entities = (function () {
      * @return {ash.core.Entity}
      */
     Entities.prototype.createGem = function (id, index, col, row, key, frame) {
-        var sprite = new cc.Sprite();
-        sprite.initWithSpriteFrameName(key + frame);
+        var sprite = new cc.Sprite("#" + Entities.COLORS[frame] + ".png");
         var gem = new Entity('gem')
             .add(new Group(index))
             .add(new Display(sprite))
@@ -227,6 +225,16 @@ var Entities = (function () {
         this.engine.addEntity(entity);
         return entity;
     };
+    Entities.COLORS = [
+        'blue',
+        'cyan',
+        'green',
+        'magenta',
+        'orange',
+        'pink',
+        'red',
+        'yellow'
+    ];
     return Entities;
 })();
 /**

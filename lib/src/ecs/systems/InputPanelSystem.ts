@@ -18,14 +18,14 @@
  * grid panel. A gem group occupies 2 - 4 adjacent cells.
  * Position and drop the group onto the puzzle grid panel.
  *
- *
+ *<pre>
  *    0   1   2   3   4   5
  *  +---+---+---+---+---+---+
  *  |   |   |   |   |   |   | 0
  *  +---+---+---+---+---+---+
  *  |   |   |   |   |   |   | 1
  *  +---+---+---+---+---+---+
- *
+ *</pre>
  *
  */
 

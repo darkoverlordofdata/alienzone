@@ -1,4 +1,4 @@
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
@@ -42,11 +42,11 @@ var Controller = (function (_super) {
         /**
          * create the background
          */
-        factory.createButton(280, 470, res.controller_back_png, this.onBack, this);
-        factory.createImage(160, 240, res.controller_scores_png, 150);
-        factory.createImage(75, 420, res.controller_logo_png);
+        factory.createButton(280, 470, 'back.png', this.onBack, this);
+        factory.createImage(160, 240, 'scores.png', 150);
+        factory.createImage(75, 420, 'd16a.png');
         factory.createText(160, 240, creditsText, 12, cc.color.WHITE);
-        factory.createImage(160, 110, res.controller_google_png);
+        factory.createImage(160, 110, 'en_generic_rgb_wo_45.png');
         factory.createText(160, 40, 'Alien Zone v' + VERSION, 24, cc.color.YELLOW);
         factory.createText(160, 20, "© Copyright 2014 Dark Overlord of Data", 12, cc.color.WHITE);
         /**

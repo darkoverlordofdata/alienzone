@@ -1,4 +1,4 @@
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
@@ -59,7 +59,7 @@ var Menu = (function (_super) {
         this._super();
         var _a = this, width = _a.width, height = _a.height;
         var x = ~~width / 2;
-        var title = new cc.Sprite(res.title_png);
+        var title = new cc.Sprite('#title.png');
         title.setPosition(cc.p(x, height - 50));
         /**
          * Select Game
@@ -67,12 +67,12 @@ var Menu = (function (_super) {
          * Infinity - no time limit
          * FTL - timed
          */
-        var infinityNormal = new cc.Sprite(res.infinity_png);
-        var infinitySelected = new cc.Sprite(res.infinity_png);
-        var infinityDisabled = new cc.Sprite(res.infinity_png);
-        var ftlNormal = new cc.Sprite(res.ftl_png);
-        var ftlSelected = new cc.Sprite(res.ftl_png);
-        var ftlDisabled = new cc.Sprite(res.ftl_png);
+        var infinityNormal = new cc.Sprite('#infinity.png');
+        var infinitySelected = new cc.Sprite('#infinity.png');
+        var infinityDisabled = new cc.Sprite('#infinity.png');
+        var ftlNormal = new cc.Sprite('#ftl.png');
+        var ftlSelected = new cc.Sprite('#ftl.png');
+        var ftlDisabled = new cc.Sprite('#ftl.png');
         var infinity = new cc.MenuItemSprite(infinityNormal, infinitySelected, infinityDisabled, this.onInfinity, this);
         var ftl = new cc.MenuItemSprite(ftlNormal, ftlSelected, ftlDisabled, this.onFtl, this);
         var gameMenu = new cc.Menu(infinity, ftl);
@@ -86,18 +86,18 @@ var Menu = (function (_super) {
          * Leaderboards
          * Instructions
          */
-        var achievementsNormal = new cc.Sprite(res.gamesAchievements_png, cc.rect(0, 0, 64, 64));
-        var achievementsSelected = new cc.Sprite(res.gamesAchievements_png, cc.rect(64, 0, 64, 64));
-        var achievementsDisabled = new cc.Sprite(res.gamesAchievements_png, cc.rect(128, 0, 64, 64));
-        var controllerNormal = new cc.Sprite(res.gamesController_png, cc.rect(0, 0, 64, 64));
-        var controllerSelected = new cc.Sprite(res.gamesController_png, cc.rect(64, 0, 64, 64));
-        var controllerDisabled = new cc.Sprite(res.gamesController_png, cc.rect(128, 0, 64, 64));
-        var leaderboardsNormal = new cc.Sprite(res.gamesLeaderboards_png, cc.rect(0, 0, 64, 64));
-        var leaderboardsSelected = new cc.Sprite(res.gamesLeaderboards_png, cc.rect(64, 0, 64, 64));
-        var leaderboardsDisabled = new cc.Sprite(res.gamesLeaderboards_png, cc.rect(128, 0, 64, 64));
-        var instructionsNormal = new cc.Sprite(res.instructions_png);
-        var instructionsSelected = new cc.Sprite(res.instructions_png);
-        var instructionsDisabled = new cc.Sprite(res.instructions_png);
+        var achievementsNormal = new cc.Sprite('#games_achievements.png');
+        var achievementsSelected = new cc.Sprite('#games_achievements_green.png');
+        var achievementsDisabled = new cc.Sprite('#games_achievements_white.png');
+        var controllerNormal = new cc.Sprite('#games_controller.png');
+        var controllerSelected = new cc.Sprite('#games_controller_grey.png');
+        var controllerDisabled = new cc.Sprite('#games_controller_white.png');
+        var leaderboardsNormal = new cc.Sprite('#games_leaderboards.png');
+        var leaderboardsSelected = new cc.Sprite('#games_leaderboards_green.png');
+        var leaderboardsDisabled = new cc.Sprite('#games_leaderboards_white.png');
+        var instructionsNormal = new cc.Sprite('#instructions.png');
+        var instructionsSelected = new cc.Sprite('#instructions.png');
+        var instructionsDisabled = new cc.Sprite('#instructions.png');
         var achievements = new cc.MenuItemSprite(achievementsNormal, achievementsSelected, achievementsDisabled, this.onAchievements, this);
         var controller = new cc.MenuItemSprite(controllerNormal, controllerSelected, controllerDisabled, this.onController, this);
         var leaderboards = new cc.MenuItemSprite(leaderboardsNormal, leaderboardsSelected, leaderboardsDisabled, this.onLeaderboards, this);
@@ -111,12 +111,13 @@ var Menu = (function (_super) {
          * Sound Effects Volume
          * Music Volume
          */
-        var sfxNormal = new cc.Sprite(res.sfx_option_png, cc.rect(0, 0, 70, 61));
-        var sfxSelected = new cc.Sprite(res.sfx_option_png, cc.rect(70, 0, 70, 61));
-        var sfxDisabled = new cc.Sprite(res.sfx_option_png, cc.rect(0, 0, 70, 61));
-        var musicNormal = new cc.Sprite(res.music_option_png, cc.rect(0, 0, 47, 57));
-        var musicSelected = new cc.Sprite(res.music_option_png, cc.rect(47, 0, 47, 57));
-        var musicDisabled = new cc.Sprite(res.music_option_png, cc.rect(0, 0, 47, 57));
+        var sprite;
+        var sfxNormal = new cc.Sprite('#b_Sound1.png');
+        var sfxSelected = new cc.Sprite('#b_Sound1_Inactive.png');
+        var sfxDisabled = new cc.Sprite('#b_Sound1.png');
+        var musicNormal = new cc.Sprite('#b_Music.png');
+        var musicSelected = new cc.Sprite('#b_No.png');
+        var musicDisabled = new cc.Sprite('#b_Music.png');
         var sfx = new cc.MenuItemSprite(sfxNormal, sfxSelected, sfxDisabled, this.onSfx, this);
         var music = new cc.MenuItemSprite(musicNormal, musicSelected, musicDisabled, this.onMusic, this);
         var settingsMenu = new cc.Menu(sfx, music);

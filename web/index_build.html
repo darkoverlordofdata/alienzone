@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html manifest="manifest.appcachez">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Alien Zone</title>
+    <link rel="icon" sizes="192x192" href="res/icons/icon192.png">
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="360-fullscreen" content="true"/>
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Space Crystal Match3">
+    <meta name="author" content="">
+
+    <meta property="og:title" content="Space Crystal Match3" />
+    <meta property="og:type" content="game" />
+    <meta property="og:url" content="https://games.darkoverlordofdata.com/alienzone/" />
+    <meta property="og:image" content="https://games.darkoverlordofdata.com/assets/alienzone.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Alien Zone" />
+    <meta property="og:description" content="Space Crystal Match3" />
+    <meta property="fb:app_id" content="???????????????" id="fbAppId"/>
+    <meta property="fb:admins" content="100002160218840">
+
+    <style>
+        @font-face{
+            font-family:'opendyslexic';
+            font-style: normal;
+            font-weight: 400;
+            src: local('opendyslexic'),
+            url(res/fonts/OpenDyslexic-Regular.eot) format('embedded-opentype'),
+            url(res/fonts/OpenDyslexic-Regular.woff) format('woff'),
+            url(res/fonts/OpenDyslexic-Regular.otf) format('opentype'),
+            url(res/fonts/OpenDyslexic-Regular.ttf) format('truetype');
+        }
+        body {
+            border: 0;
+            padding: 0;
+            background-color: #000;
+        }
+        body, canvas, div {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -khtml-user-select: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+        :-webkit-full-screen {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: none;
+        }
+
+    </style>
+</head>
+<body>
+<script src="res/loading.js"></script>
+<canvas id="gameCanvas" width="320" height="480"></canvas>
+<script cocos src="main.js"></script>
+<script src="license.js"></script>
+</body>
+</html><!--
+         ___   ___        ____
+        / _ | / (_)__ ___/_  / ___  ___  ___
+       / __ |/ / / -_) _ \/ /_/ _ \/ _ \/ -_)
+      /_/ |_/_/_/\__/_//_/___/\___/_//_/\__/
+
+
+  - by Dark Overlord of Data
+
+-->

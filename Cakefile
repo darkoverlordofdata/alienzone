@@ -96,7 +96,7 @@ task 'prebuild:make', 'compile app to build', (options) ->
   """.split('\n').join(' && ')
 
   if options.compile?
-    c1 = "cat #{files} | java -jar tools/compiler.jar --warning_level=QUIET --compilation_level #{options.compile} --js_output_file build/web/main.js"
+    c1 = "cat #{files} | java -jar tools/compiler.jar --jscomp_error=checkTypes --warning_level=QUIET --compilation_level #{options.compile} --js_output_file build/web/main.js"
   else
     c1 = """
       cp -fr web/src build/web/src

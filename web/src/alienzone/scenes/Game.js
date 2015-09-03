@@ -1,4 +1,4 @@
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
@@ -50,7 +50,7 @@ var Game = (function (_super) {
          * create the background entities
          */
         factory.createScore(160, 430, 'Score');
-        factory.createImage(142, 264, res.game_slots_png, 100);
+        factory.createImage(142, 264, 'slots.png', 100);
         factory.createLegend(296, 360, 'legend', 0, 255);
         factory.createLegend(296, 328, 'legend', 1, 255);
         factory.createLegend(296, 296, 'legend', 2, 255);
@@ -64,7 +64,7 @@ var Game = (function (_super) {
         factory.createInput(124, 25, 'right', player);
         factory.createInput(244, 25, 'lrot', player);
         factory.createInput(294, 25, 'rrot', player);
-        factory.createButton(280, 470, res.game_back_png, this.onBack, this);
+        factory.createButton(280, 470, 'back.png', this.onBack, this);
         switch (this.leaderboard) {
             case GameType.Unlimited:
                 factory.createText(160, 460, 'InfinitY', 24, cc.color.YELLOW);

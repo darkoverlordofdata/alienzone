@@ -16,7 +16,7 @@ localstorageDb,
 and Cocos2d-js
 
 
-Play the online demo at [https://darkoverlordofdata.com/alienzone](https://darkoverlordofdata.com/alienzone)
+Play the online demo at [https://darkoverlordofdata.com/alienzone](example.html)
 
 # Install
 

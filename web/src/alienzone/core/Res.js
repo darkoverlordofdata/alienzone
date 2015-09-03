@@ -58,53 +58,9 @@ var SystemPriorities = {
  * @enum {string}
  */
 var res = {
-    // Fonts
-    // =====
     opendyslexic: "res/fonts/OpenDyslexic-Regular.ttf",
-    // Main Menu resources
-    // ===================
-    title_png: "res/MainMenu/title.png",
-    infinity_png: "res/MainMenu/infinity.png",
-    ftl_png: "res/MainMenu/ftl.png",
-    gamesAchievements_png: "res/MainMenu/games_achievements.png",
-    gamesController_png: "res/MainMenu/games_controller.png",
-    gamesLeaderboards_png: "res/MainMenu/games_leaderboards.png",
-    instructions_png: "res/MainMenu/instructions.png",
-    sfx_option_png: "res/MainMenu/sfx_option.png",
-    music_option_png: "res/MainMenu/music_option.png",
-    // Help resources
-    // ==============
-    instructions_back_png: "res/Instructions/back.png",
-    instructions_logo_png: "res/Instructions/d16a.png",
-    instructions_scores_png: "res/Instructions/scores.png",
-    // Game resources
-    // ==============
-    game_back_png: "res/Game/back.png",
-    game_slots_png: "res/Game/slots.png",
-    game_gems_png: "res/Game/gems.png",
-    game_legend_png: "res/Game/legend.png",
-    game_down_png: "res/Game/down.png",
-    game_left_png: "res/Game/left.png",
-    game_right_png: "res/Game/right.png",
-    game_lrot_png: "res/Game/lrot.png",
-    game_rrot_png: "res/Game/rrot.png",
-    // Achievements resources
-    // ==============
-    achievements_back_png: "res/Achievements/back.png",
-    achievements_logo_png: "res/Achievements/d16a.png",
-    achievements_scores_png: "res/Achievements/scores.png",
-    // Leaderboards resources
-    // ==============
-    leaderboards_back_png: "res/Leaderboards/back.png",
-    leaderboards_logo_png: "res/Instructions/d16a.png",
-    leaderboards_scores_png: "res/Instructions/scores.png",
-    // Controller resources
-    // ==============
-    controller_back_png: "res/Controller/back.png",
-    controller_logo_png: "res/Controller/d16a.png",
-    controller_scores_png: "res/Controller/scores.png",
-    controller_google_png: "res/Controller/en_generic_rgb_wo_45.png",
-    // Sound Effects
+    images_png: "res/images.png",
+    images_plist: "res/images.plist",
     powerup0: 'res/sfx/Powerup.ogg',
     powerup1: 'res/sfx/Powerup2.ogg',
     powerup2: 'res/sfx/Powerup3.ogg',

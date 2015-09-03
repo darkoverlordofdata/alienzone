@@ -18,17 +18,17 @@
  * grid panel. A gem group occupies 2 - 4 adjacent cells.
  * Position and drop the group onto the puzzle grid panel.
  *
- *
+ *<pre>
  *    0   1   2   3   4   5
  *  +---+---+---+---+---+---+
  *  |   |   |   |   |   |   | 0
  *  +---+---+---+---+---+---+
  *  |   |   |   |   |   |   | 1
  *  +---+---+---+---+---+---+
- *
+ *</pre>
  *
  */
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
