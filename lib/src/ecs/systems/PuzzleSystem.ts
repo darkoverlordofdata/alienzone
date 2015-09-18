@@ -64,7 +64,7 @@ class PuzzleSystem extends ash.core.System {
      */
     public addToEngine(engine:ash.core.Engine) {
         this.gemNodes = engine.getNodeList(Nodes.GemNode);
-        Reg.drop.add(this.dropped);
+        Blackboard.drop.add(this.dropped);
 
     }
 
@@ -73,7 +73,7 @@ class PuzzleSystem extends ash.core.System {
      * @param {ash.core.Engine} engine
      */
     public removeFromEngine(engine:ash.core.Engine) {
-        Reg.drop.removeAll();
+        Blackboard.drop.removeAll();
         this.gemNodes = null;
         this.gems = null;
     }
@@ -93,7 +93,7 @@ class PuzzleSystem extends ash.core.System {
                 if (match.row === row) {
                     var xform:Transform = new Transform(match.x + 24, height - match.y - 24);
                     // Get the gem column
-                    var column:jMatch3.Piece[] = Reg.puzzle.getColumn(match.col, false);
+                    var column:jMatch3.Piece[] = Blackboard.puzzle.getColumn(match.col, false);
                     // Get the last empty piece to place the gem
                     var lastEmpty:jMatch3.Piece = jMatch3.Grid.getLastEmptyPiece(column);
                     // If an empty piece has been found
@@ -101,8 +101,8 @@ class PuzzleSystem extends ash.core.System {
                         // Bind this gem to the piece
                         lastEmpty.object = match;
 
-                        var x = lastEmpty.x * Reg.GEMSIZE;
-                        var y = lastEmpty.y * Reg.GEMSIZE + (2 * Reg.GEMSIZE);
+                        var x = lastEmpty.x * GEMSIZE;
+                        var y = lastEmpty.y * GEMSIZE + (2 * GEMSIZE);
 
                         gem.add(xform);
                         new TWEEN.Tween(xform)
@@ -132,9 +132,9 @@ class PuzzleSystem extends ash.core.System {
          * Add to score for all the matches, them
          * delete the matching tiles.
          */
-        if (Reg.puzzle.getMatches().length != 0) {
+        if (Blackboard.puzzle.getMatches().length != 0) {
             piecesToUpgrade = [];
-            Reg.puzzle.forEachMatch((matchingPieces: jMatch3.Piece[], type:string) => {
+            Blackboard.puzzle.forEachMatch((matchingPieces: jMatch3.Piece[], type:string) => {
                 this.updateScore(matchingPieces, type);
                 piecesToUpgrade.push(type);
                 matchingPieces.forEach((matchingPiece) => {
@@ -143,11 +143,11 @@ class PuzzleSystem extends ash.core.System {
                     this.factory.destroyEntity(gem);
                 });
             });
-            Reg.puzzle.clearMatches();
+            Blackboard.puzzle.clearMatches();
             this.upgrade(piecesToUpgrade);
         }
 
-        var fallingPieces:jMatch3.Piece[] = Reg.puzzle.applyGravity();
+        var fallingPieces:jMatch3.Piece[] = Blackboard.puzzle.applyGravity();
         var hasFall:number = 0;
         var height = this.parent.height;
 
@@ -161,14 +161,14 @@ class PuzzleSystem extends ash.core.System {
                 var gem:Entity = this.gems[match.id];
                 var xform:Transform = gem.get(Transform);
 
-                xform.x = (piece.x * Reg.GEMSIZE) + 24;
-                xform.y = height - (piece.y * Reg.GEMSIZE + 2 * Reg.GEMSIZE) - 24;
+                xform.x = (piece.x * GEMSIZE) + 24;
+                xform.y = height - (piece.y * GEMSIZE + 2 * GEMSIZE) - 24;
                 if (++hasFall === fallingPieces.length) {
                     this.handleMatches();
                 }
             });
         } else {
-            Reg.create.dispatch();
+            Blackboard.create.dispatch();
         }
     };
 
@@ -179,26 +179,26 @@ class PuzzleSystem extends ash.core.System {
     private upgrade = (piecesToUpgrade:string[]) => {
         var levelUp:boolean = false;
         piecesToUpgrade.forEach((type) => {
-            var upgradeIndex:number = Reg.GEMTYPES.indexOf(type) + 1;
+            var upgradeIndex:number = GEMTYPES.indexOf(type) + 1;
 
-            if (upgradeIndex >= Reg.GEMTYPES.length) {
+            if (upgradeIndex >= GEMTYPES.length) {
                 /**
                  * Level Up...
                  */
                 var scene = new cc.Scene();
-                scene.addChild(new Game(this.parent.scene, Reg.type, Reg.score));
+                scene.addChild(new Game(this.parent.scene, Blackboard.type, Blackboard.score));
                 cc.director.runScene(new cc.TransitionFade(1.2, scene));
             }
 
 
-            if (Reg.level < upgradeIndex) {
-                Reg.setLevel (upgradeIndex);
+            if (Blackboard.level < upgradeIndex) {
+                Blackboard.setLevel (upgradeIndex);
                 levelUp = true;
             }
-            var upgradedType:string = Reg.GEMTYPES[upgradeIndex];
+            var upgradedType:string = GEMTYPES[upgradeIndex];
             if (upgradedType != null) {
-                if (Reg.discoveredGems.indexOf(upgradedType) == -1)
-                    Reg.discoveredGems.push(upgradedType);
+                if (Blackboard.discoveredGems.indexOf(upgradedType) == -1)
+                    Blackboard.discoveredGems.push(upgradedType);
             }
         });
         if (levelUp)
@@ -212,8 +212,8 @@ class PuzzleSystem extends ash.core.System {
      * @param {string} type
      */
     private updateScore = (matches:jMatch3.Piece[], type:string) => {
-        var points:number = (Reg.GEMTYPES.indexOf(type) + 1) * matches.length * (this.board+1);
-        Reg.updateScore(points);
+        var points:number = (GEMTYPES.indexOf(type) + 1) * matches.length * (this.board+1);
+        Blackboard.updateScore(points);
     };
 }
 

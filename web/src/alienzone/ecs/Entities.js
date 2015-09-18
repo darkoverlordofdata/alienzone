@@ -154,7 +154,7 @@ var Entities = (function () {
      * @return {ash.core.Entity}
      */
     Entities.prototype.createLegend = function (x, y, frame, level, alpha) {
-        var sprite = new cc.Sprite("#" + Entities.COLORS[level] + "2.png");
+        var sprite = new cc.Sprite("#" + GEMTYPES[level] + "2.png");
         sprite.setOpacity(alpha);
         var legend = new Entity('legend')
             .add(new Display(sprite))
@@ -197,11 +197,11 @@ var Entities = (function () {
      * @return {ash.core.Entity}
      */
     Entities.prototype.createGem = function (id, index, col, row, key, frame) {
-        var sprite = new cc.Sprite("#" + Entities.COLORS[frame] + ".png");
+        var sprite = new cc.Sprite("#" + GEMTYPES[frame] + ".png");
         var gem = new Entity('gem')
             .add(new Group(index))
             .add(new Display(sprite))
-            .add(new Match(id, Reg.GEMTYPES[frame], Reg.GEMSIZE, index, col, row));
+            .add(new Match(id, GEMTYPES[frame], GEMSIZE, index, col, row));
         this.engine.addEntity(gem);
         return gem;
     };
@@ -225,16 +225,6 @@ var Entities = (function () {
         this.engine.addEntity(entity);
         return entity;
     };
-    Entities.COLORS = [
-        'blue',
-        'cyan',
-        'green',
-        'magenta',
-        'orange',
-        'pink',
-        'red',
-        'yellow'
-    ];
     return Entities;
 })();
 /**

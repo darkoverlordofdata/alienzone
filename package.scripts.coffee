@@ -40,6 +40,10 @@ TSCONFIG        = "./tsconfig.json"
 ###
 module.exports = (project, options = {}) ->
 
+  options.compile = 'ADVANCED_OPTIMIZATIONS'
+  options.compile = 'SIMPLE_OPTIMIZATIONS'
+  #options.compile = 'WHITESPACE_ONLY'
+
   # get project config
   csconfig = if fs.existsSync(CSCONFIG) then require(CSCONFIG) else files: []
   jsconfig = if fs.existsSync(JSCONFIG) then require(JSCONFIG) else files: []
@@ -57,7 +61,6 @@ module.exports = (project, options = {}) ->
 
   ### Build the android asset folder ###
   android: do ->
-    options.compile ?= 'WHITESPACE_ONLY'
     
     step = []
 
@@ -85,10 +88,10 @@ module.exports = (project, options = {}) ->
 
   ### build the project ###
   build: do ->
-    options.compile ?= 'ADVANCED_OPTIMIZATIONS'
     
     step = if project.config? then [].concat(project.config.build) else []
       
+    #            --formatting PRETTY_PRINT \
     if isCocos2d
       ###
       # Use cocos2d project.json to build the target
@@ -100,7 +103,6 @@ module.exports = (project, options = {}) ->
             --jscomp_error=checkTypes \
             --warning_level=QUIET \
             --compilation_level #{options.compile} \
-            --formatting PRETTY_PRINT \
             --js_output_file build/web/main.js
         """
       else

@@ -19,16 +19,6 @@
  */
 class Entities {
     
-    static COLORS = [
-        'blue',
-        'cyan',
-        'green',
-        'magenta',
-        'orange',
-        'pink',
-        'red',
-        'yellow'
-    ];
     /**
      *
      * @constructor
@@ -179,7 +169,7 @@ class Entities {
      */
     public createLegend(x: number, y: number, frame: string, level: number, alpha: number): Entity {
 
-        var sprite = new cc.Sprite(`#${Entities.COLORS[level]}2.png`);
+        var sprite = new cc.Sprite(`#${GEMTYPES[level]}2.png`);
         sprite.setOpacity(alpha);
 
         var legend: Entity = new Entity('legend')
@@ -231,11 +221,11 @@ class Entities {
      */
     public createGem(id: number, index: number, col: number, row: number, key: string, frame: number): Entity {
 
-        var sprite = new cc.Sprite(`#${Entities.COLORS[frame]}.png`);
+        var sprite = new cc.Sprite(`#${GEMTYPES[frame]}.png`);
         var gem = new Entity('gem')
             .add(new Group(index))
             .add(new Display(sprite))
-            .add(new Match(id, Reg.GEMTYPES[frame], Reg.GEMSIZE, index, col, row));
+            .add(new Match(id, GEMTYPES[frame], GEMSIZE, index, col, row));
         this.engine.addEntity(gem);
         return gem;
     }

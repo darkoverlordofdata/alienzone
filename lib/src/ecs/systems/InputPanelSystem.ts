@@ -85,20 +85,20 @@ class InputPanelSystem extends ash.core.System {
         /**
          * initialize blackboard values
          */
-        Reg.create.add(this.createGems);
-        Reg.discoveredGems = [];
-        for (var i=0; i<Reg.GEMTYPES.length; i++) {
+        Blackboard.create.add(this.createGems);
+        Blackboard.discoveredGems = [];
+        for (var i=0; i<GEMTYPES.length; i++) {
             if (i < 3) {
-                Reg.discoveredGems.push(Reg.GEMTYPES[i]);
+                Blackboard.discoveredGems.push(GEMTYPES[i]);
             }
         }
-        Reg.level = Reg.discoveredGems.length-1;
-        Reg.create.dispatch();
-        Reg.scored.add((points:number) => {
+        Blackboard.level = Blackboard.discoveredGems.length-1;
+        Blackboard.create.dispatch();
+        Blackboard.scored.add((points:number) => {
             this.flourish = true;
         });
-        if (Reg.type === GameType.Timed) {
-            Reg.timer.add(this.drop);
+        if (Blackboard.type === GameType.Timed) {
+            Blackboard.timer.add(this.drop);
         }
     }
 
@@ -110,7 +110,7 @@ class InputPanelSystem extends ash.core.System {
         /**
          * dispose the resources
          */
-        Reg.create.removeAll();
+        Blackboard.create.removeAll();
         this.player = null;
         this.groupNodes = null;
 
@@ -152,11 +152,11 @@ class InputPanelSystem extends ash.core.System {
 
         var i:number = 1;
 
-        switch (Reg.difficulty) {
+        switch (Blackboard.difficulty) {
 
             case 0:
                 var pips:number[] = [1,2,1,2,1,2,1,2];
-                i = pips[Reg.level];
+                i = pips[Blackboard.level];
                 if (this.weight>1) {
                     i -= 1;
                 }
@@ -165,14 +165,14 @@ class InputPanelSystem extends ash.core.System {
 
             case 1:
                 var pips:number[] = [1,1,1,1,1,2,2,3];
-                i = pips[Reg.level];
+                i = pips[Blackboard.level];
                 this.weight = (i>1) ? this.weight+1 : 0;
-                if (this.weight>2) i -= (Reg.rnd.nextBool()) ? 0 : 1;
+                if (this.weight>2) i -= (rnd.nextBool()) ? 0 : 1;
                 break;
 
             case 2:
                 var pips:number[] = [1,1,1,2,2,2,2,3];
-                i = pips[Reg.level];
+                i = pips[Blackboard.level];
                 if (this.weight>1) {
                     i -= 1;
                     this.weight -=1;
@@ -181,9 +181,9 @@ class InputPanelSystem extends ash.core.System {
 
             default:
                 var pips:number[] = [1,1,1,1,2,2,3,0];
-                i = pips[Reg.level];
+                i = pips[Blackboard.level];
                 this.weight = (i>1) ? this.weight+1 : 0;
-                if (this.weight>2) i -= (Reg.rnd.nextBool()) ? 0 : 1;
+                if (this.weight>2) i -= (rnd.nextBool()) ? 0 : 1;
                 break;
 
         }
@@ -206,7 +206,7 @@ class InputPanelSystem extends ash.core.System {
         for (var row=0; row<2; row++) {
             for (var col=0; col<2; col++) {
                 if (cursor[row][col] != 0) {
-                    var frame:number = Reg.rnd.nextInt(Reg.discoveredGems.length);
+                    var frame:number = rnd.nextInt(Blackboard.discoveredGems.length);
                     this.gems.push(this.factory.createGem(++this.uniqueId, this.gems.length, col, row, 'gem', frame));
                 }
             }
@@ -216,17 +216,17 @@ class InputPanelSystem extends ash.core.System {
         this.updateGems(true);
         var times = 0;
         if (this.flourish) {
-            var dir:number = (Reg.rnd.nextBool()) ? Direction.Left : Direction.Right;
+            var dir:number = (rnd.nextBool()) ? Direction.Left : Direction.Right;
 
             cc.director.getScheduler().scheduleCallbackForTarget(this, () => {
                 this.rotate(dir);
                 times++;
                 if (times === 3) {
-                    Reg.reset.dispatch();
+                    Blackboard.reset.dispatch();
                 }
             }, 0.1, 3, 0, false);
         } else {
-            Reg.reset.dispatch();
+            Blackboard.reset.dispatch();
         }
         this.flourish = false;
         
@@ -286,11 +286,11 @@ class InputPanelSystem extends ash.core.System {
                     match.row = row;
 
                     if (init) {
-                        match.x = x * Reg.GEMSIZE;
-                        match.y = row * Reg.GEMSIZE;
+                        match.x = x * GEMSIZE;
+                        match.y = row * GEMSIZE;
                     } else {
                         new TWEEN.Tween(match)
-                            .to(cc.p(x * Reg.GEMSIZE, row * Reg.GEMSIZE), 300)
+                            .to(cc.p(x * GEMSIZE, row * GEMSIZE), 300)
                             .start();
                     }
                 }
@@ -322,7 +322,7 @@ class InputPanelSystem extends ash.core.System {
         for (var col=0; col<6; col++) {
             if (cols[col] > 0) {
                 var k:number = 0;
-                var column:jMatch3.Piece[] = Reg.puzzle.getColumn(col, false);
+                var column:jMatch3.Piece[] = Blackboard.puzzle.getColumn(col, false);
                 column.forEach((piece:jMatch3.Piece) => {
                     k += (piece.object.type === 'empty') ? 1 : 0;
                 });
@@ -342,7 +342,7 @@ class InputPanelSystem extends ash.core.System {
             gem.remove(Group);
             gem.add(new Puzzle(match.col, match.row));
         });
-        Reg.drop.dispatch(this.gems);
+        Blackboard.drop.dispatch(this.gems);
 
     };
 
@@ -361,7 +361,7 @@ class InputPanelSystem extends ash.core.System {
      */
     private gameOver = () => {
         var scene = new cc.Scene();
-        scene.addChild(new Leaderboards(Reg.type, Reg.score));
+        scene.addChild(new Leaderboards(Blackboard.type, Blackboard.score));
         cc.director.pushScene(new cc.TransitionFade(1.2, scene));
     }
 }

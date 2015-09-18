@@ -1,5 +1,5 @@
 /**
- * Resources / Globals
+ * Global resource values
  *
  */
 import Entity       = ash.core.Entity;
@@ -55,6 +55,23 @@ var SystemPriorities = {
     render1: 9
 
 };
+
+const rnd: IRandum = new MersenneTwister();
+
+const VOLUME_ON             = 1.0;  // sound dampening factor
+const VOLUME_OFF            = 0.0;  // sound dampening factor
+const SFX_COUNT: number     = 20;   // sound effects
+const GEMSIZE: number       = 48;   // Gem size constant in pixels
+const GEMTYPES: string[]    = [     // All gem types:
+    "blue",
+    "cyan",
+    "green",
+    "magenta",
+    "orange",
+    "pink",
+    "red",
+    "yellow"
+];
 
 /**
  * res - Resources

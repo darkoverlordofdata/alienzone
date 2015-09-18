@@ -28,7 +28,7 @@ class TimerSystem extends ash.tools.ListIteratingSystem {
     constructor(public parent:cc.Layer, public factory:Entities) {
         super(Nodes.TimerNode);
         this.nodeUpdateFunction = this.nodeUpdate;
-        Reg.reset.add(() => {this.reset = true;});
+        Blackboard.reset.add(() => {this.reset = true;});
     }
 
     /**
@@ -54,7 +54,7 @@ class TimerSystem extends ash.tools.ListIteratingSystem {
             d1 = ~~(d1/10);
             node.display.graphic.string = `${d1}:${d2}`;
         } else {
-            Reg.timer.dispatch();
+            Blackboard.timer.dispatch();
         }
     }
 }

@@ -71,10 +71,10 @@ var InputPanelSystem = (function (_super) {
          */
         this.createGems = function () {
             var i = 1;
-            switch (Reg.difficulty) {
+            switch (Blackboard.difficulty) {
                 case 0:
                     var pips = [1, 2, 1, 2, 1, 2, 1, 2];
-                    i = pips[Reg.level];
+                    i = pips[Blackboard.level];
                     if (_this.weight > 1) {
                         i -= 1;
                     }
@@ -82,14 +82,14 @@ var InputPanelSystem = (function (_super) {
                     break;
                 case 1:
                     var pips = [1, 1, 1, 1, 1, 2, 2, 3];
-                    i = pips[Reg.level];
+                    i = pips[Blackboard.level];
                     _this.weight = (i > 1) ? _this.weight + 1 : 0;
                     if (_this.weight > 2)
-                        i -= (Reg.rnd.nextBool()) ? 0 : 1;
+                        i -= (rnd.nextBool()) ? 0 : 1;
                     break;
                 case 2:
                     var pips = [1, 1, 1, 2, 2, 2, 2, 3];
-                    i = pips[Reg.level];
+                    i = pips[Blackboard.level];
                     if (_this.weight > 1) {
                         i -= 1;
                         _this.weight -= 1;
@@ -97,10 +97,10 @@ var InputPanelSystem = (function (_super) {
                     break;
                 default:
                     var pips = [1, 1, 1, 1, 2, 2, 3, 0];
-                    i = pips[Reg.level];
+                    i = pips[Blackboard.level];
                     _this.weight = (i > 1) ? _this.weight + 1 : 0;
                     if (_this.weight > 2)
-                        i -= (Reg.rnd.nextBool()) ? 0 : 1;
+                        i -= (rnd.nextBool()) ? 0 : 1;
                     break;
             }
             if (i < 0)
@@ -123,7 +123,7 @@ var InputPanelSystem = (function (_super) {
             for (var row = 0; row < 2; row++) {
                 for (var col = 0; col < 2; col++) {
                     if (cursor[row][col] != 0) {
-                        var frame = Reg.rnd.nextInt(Reg.discoveredGems.length);
+                        var frame = rnd.nextInt(Blackboard.discoveredGems.length);
                         _this.gems.push(_this.factory.createGem(++_this.uniqueId, _this.gems.length, col, row, 'gem', frame));
                     }
                 }
@@ -133,17 +133,17 @@ var InputPanelSystem = (function (_super) {
             _this.updateGems(true);
             var times = 0;
             if (_this.flourish) {
-                var dir = (Reg.rnd.nextBool()) ? Direction.Left : Direction.Right;
+                var dir = (rnd.nextBool()) ? Direction.Left : Direction.Right;
                 cc.director.getScheduler().scheduleCallbackForTarget(_this, function () {
                     _this.rotate(dir);
                     times++;
                     if (times === 3) {
-                        Reg.reset.dispatch();
+                        Blackboard.reset.dispatch();
                     }
                 }, 0.1, 3, 0, false);
             }
             else {
-                Reg.reset.dispatch();
+                Blackboard.reset.dispatch();
             }
             _this.flourish = false;
         };
@@ -203,12 +203,12 @@ var InputPanelSystem = (function (_super) {
                         match.col = x;
                         match.row = row;
                         if (init) {
-                            match.x = x * Reg.GEMSIZE;
-                            match.y = row * Reg.GEMSIZE;
+                            match.x = x * GEMSIZE;
+                            match.y = row * GEMSIZE;
                         }
                         else {
                             new TWEEN.Tween(match)
-                                .to(cc.p(x * Reg.GEMSIZE, row * Reg.GEMSIZE), 300)
+                                .to(cc.p(x * GEMSIZE, row * GEMSIZE), 300)
                                 .start();
                         }
                     }
@@ -239,7 +239,7 @@ var InputPanelSystem = (function (_super) {
             for (var col = 0; col < 6; col++) {
                 if (cols[col] > 0) {
                     var k = 0;
-                    var column = Reg.puzzle.getColumn(col, false);
+                    var column = Blackboard.puzzle.getColumn(col, false);
                     column.forEach(function (piece) {
                         k += (piece.object.type === 'empty') ? 1 : 0;
                     });
@@ -259,7 +259,7 @@ var InputPanelSystem = (function (_super) {
                 gem.remove(Group);
                 gem.add(new Puzzle(match.col, match.row));
             });
-            Reg.drop.dispatch(_this.gems);
+            Blackboard.drop.dispatch(_this.gems);
         };
         /**
          *
@@ -275,7 +275,7 @@ var InputPanelSystem = (function (_super) {
          */
         this.gameOver = function () {
             var scene = new cc.Scene();
-            scene.addChild(new Leaderboards(Reg.type, Reg.score));
+            scene.addChild(new Leaderboards(Blackboard.type, Blackboard.score));
             cc.director.pushScene(new cc.TransitionFade(1.2, scene));
         };
         this.parent = parent;
@@ -295,20 +295,20 @@ var InputPanelSystem = (function (_super) {
         /**
          * initialize blackboard values
          */
-        Reg.create.add(this.createGems);
-        Reg.discoveredGems = [];
-        for (var i = 0; i < Reg.GEMTYPES.length; i++) {
+        Blackboard.create.add(this.createGems);
+        Blackboard.discoveredGems = [];
+        for (var i = 0; i < GEMTYPES.length; i++) {
             if (i < 3) {
-                Reg.discoveredGems.push(Reg.GEMTYPES[i]);
+                Blackboard.discoveredGems.push(GEMTYPES[i]);
             }
         }
-        Reg.level = Reg.discoveredGems.length - 1;
-        Reg.create.dispatch();
-        Reg.scored.add(function (points) {
+        Blackboard.level = Blackboard.discoveredGems.length - 1;
+        Blackboard.create.dispatch();
+        Blackboard.scored.add(function (points) {
             _this.flourish = true;
         });
-        if (Reg.type === GameType.Timed) {
-            Reg.timer.add(this.drop);
+        if (Blackboard.type === GameType.Timed) {
+            Blackboard.timer.add(this.drop);
         }
     };
     /**
@@ -319,7 +319,7 @@ var InputPanelSystem = (function (_super) {
         /**
          * dispose the resources
          */
-        Reg.create.removeAll();
+        Blackboard.create.removeAll();
         this.player = null;
         this.groupNodes = null;
     };

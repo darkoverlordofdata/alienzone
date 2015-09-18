@@ -20,7 +20,16 @@ class Menu extends CCLayer {
      * @return {cc.Scene} the menu scene
      */
     public static start(): cc.Scene {
-        Reg.start();
+        var properties = {
+            leaderboard: "off", // use server leaderboard
+            player: "",         // player screen name
+            userId: "",         // unique user id
+            playMusic: "50",    // music volume
+            playSfx: "50"       // soundfx volume
+        };
+
+        Properties.init('alienzone', properties);
+        cc.spriteFrameCache.addSpriteFrames("res/images.plist");
         return Menu.show(false);
     }
 

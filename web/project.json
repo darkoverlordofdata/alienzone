@@ -5,7 +5,7 @@
     "showFPS" : true,
     "frameRate" : 60,
     "id" : "gameCanvas",
-    "renderMode" : 0,
+    "renderMode" : 3,
     "engineDir":"frameworks/cocos2d-html5",
     "classReleaseMode": false,
 
@@ -63,7 +63,7 @@
         "src/alienzone/scenes/Instructions.js",
         "src/alienzone/scenes/Leaderboards.js",
         "src/alienzone/scenes/Menu.js",
-        "src/alienzone/core/Res.js",
-        "src/alienzone/core/Reg.js"
+        "src/alienzone/core/Globals.js",
+        "src/alienzone/core/Blackboard.js"
     ]
 }

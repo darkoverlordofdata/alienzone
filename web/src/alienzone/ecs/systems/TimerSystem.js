@@ -57,11 +57,11 @@ var TimerSystem = (function (_super) {
                 node.display.graphic.string = d1 + ":" + d2;
             }
             else {
-                Reg.timer.dispatch();
+                Blackboard.timer.dispatch();
             }
         };
         this.nodeUpdateFunction = this.nodeUpdate;
-        Reg.reset.add(function () { _this.reset = true; });
+        Blackboard.reset.add(function () { _this.reset = true; });
     }
     return TimerSystem;
 })(ash.tools.ListIteratingSystem);

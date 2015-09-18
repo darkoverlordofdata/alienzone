@@ -48,25 +48,27 @@ var ScoreSystem = (function (_super) {
          * @param {number} points
          */
         this.scored = function (points) {
-            cc.log('powerup = powerup' + (points % Reg.SFX_COUNT));
-            cc.log('resource =' + Reg.res('powerup' + (points % Reg.SFX_COUNT)));
-            if (Reg.sfx) {
-                cc.audioEngine.playEffect(Reg.res('powerup' + (points % Reg.SFX_COUNT)));
+            //cc.log('powerup = powerup'+(points % Blackboard.SFX_COUNT));
+            //cc.log('resource ='+res['powerup'+(points % Blackboard.SFX_COUNT)]);
+            //cc.log('resource ='+Blackboard.res('powerup'+(points % Blackboard.SFX_COUNT)));
+            if (Blackboard.sfx) {
+                //cc.audioEngine.playEffect(Blackboard.res('powerup'+(points % Blackboard.SFX_COUNT)));
+                cc.audioEngine.playEffect(res['powerup' + (points % SFX_COUNT)]);
             }
             var label = new cc.LabelTTF('' + points, opendyslexic, 48);
-            label.setFontFillColor(_this.colors[Reg.rnd.nextInt(3)]);
-            label.setPosition(_this.cols[Reg.rnd.nextInt(3)], _this.rows[Reg.rnd.nextInt(3)]);
+            label.setFontFillColor(_this.colors[rnd.nextInt(3)]);
+            label.setPosition(_this.cols[rnd.nextInt(3)], _this.rows[rnd.nextInt(3)]);
             _this.parent.addChild(label);
             var ease;
-            switch (Reg.rnd.nextInt(3)) {
+            switch (rnd.nextInt(3)) {
                 case 0:
-                    ease = cc.moveTo((Reg.rnd.nextDouble() * 2) + 2, cc.p(160, 480)).easing(cc.easeBounceInOut());
+                    ease = cc.moveTo((rnd.nextDouble() * 2) + 2, cc.p(160, 480)).easing(cc.easeBounceInOut());
                     break;
                 case 1:
-                    ease = cc.moveTo((Reg.rnd.nextDouble() * 2) + 2, cc.p(160, 480)).easing(cc.easeBounceIn());
+                    ease = cc.moveTo((rnd.nextDouble() * 2) + 2, cc.p(160, 480)).easing(cc.easeBounceIn());
                     break;
                 case 2:
-                    ease = cc.moveTo((Reg.rnd.nextDouble() * 2) + 2, cc.p(160, 480)).easing(cc.easeBounceOut());
+                    ease = cc.moveTo((rnd.nextDouble() * 2) + 2, cc.p(160, 480)).easing(cc.easeBounceOut());
                     break;
             }
             var done = cc.callFunc(function () {
@@ -75,7 +77,7 @@ var ScoreSystem = (function (_super) {
             label.runAction(cc.sequence(ease, done));
         };
         this.nodeUpdateFunction = this.nodeUpdate;
-        Reg.scored.add(this.scored);
+        Blackboard.scored.add(this.scored);
     }
     /**
      * Remove Scoring system
@@ -84,7 +86,7 @@ var ScoreSystem = (function (_super) {
      */
     ScoreSystem.prototype.removeFromEngine = function (engine) {
         _super.prototype.removeFromEngine.call(this, engine);
-        Reg.scored.removeAll();
+        Blackboard.scored.removeAll();
     };
     /**
      * Update Score Values
@@ -93,7 +95,7 @@ var ScoreSystem = (function (_super) {
      * @param {number} time
      */
     ScoreSystem.prototype.nodeUpdate = function (node, time) {
-        node.score.points = Reg.score;
+        node.score.points = Blackboard.score;
         node.display.graphic.string = node.text.value + ": " + node.score.points;
     };
     return ScoreSystem;

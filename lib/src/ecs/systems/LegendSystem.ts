@@ -30,7 +30,7 @@ class LegendSystem extends ash.tools.ListIteratingSystem {
     constructor(public parent:cc.Layer, public factory:Entities) {
         super(Nodes.LegendNode);
         this.nodeUpdateFunction = this.nodeUpdate;
-        Reg.upgrade.add((level:number) => {this.level = level;});
+        Blackboard.upgrade.add((level:number) => {this.level = level;});
 
     }
 

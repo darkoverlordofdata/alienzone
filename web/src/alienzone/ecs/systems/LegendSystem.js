@@ -37,7 +37,7 @@ var LegendSystem = (function (_super) {
         this.parent = parent;
         this.factory = factory;
         this.nodeUpdateFunction = this.nodeUpdate;
-        Reg.upgrade.add(function (level) { _this.level = level; });
+        Blackboard.upgrade.add(function (level) { _this.level = level; });
     }
     /**
      *

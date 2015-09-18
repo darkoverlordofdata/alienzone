@@ -37,7 +37,15 @@ var Menu = (function (_super) {
      * @return {cc.Scene} the menu scene
      */
     Menu.start = function () {
-        Reg.start();
+        var properties = {
+            leaderboard: "off",
+            player: "",
+            userId: "",
+            playMusic: "50",
+            playSfx: "50" // soundfx volume
+        };
+        Properties.init('alienzone', properties);
+        cc.spriteFrameCache.addSpriteFrames("res/images.plist");
         return Menu.show(false);
     };
     /**

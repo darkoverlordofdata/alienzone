@@ -42,7 +42,7 @@ var Game = (function (_super) {
      */
     Game.prototype.ctor = function () {
         this._super();
-        Reg.init(this.leaderboard, this.score);
+        Blackboard.init(this.leaderboard, this.score);
         var engine = this.engine = new ash.core.Engine();
         var factory = new Entities(this, engine);
         var player = factory.createPlayer();
@@ -83,7 +83,7 @@ var Game = (function (_super) {
         engine.addSystem(new LegendSystem(this, factory), SystemPriorities.animate);
         engine.addSystem(new InputPanelSystem(this, factory), SystemPriorities.move);
         engine.addSystem(new PuzzleSystem(this, factory), SystemPriorities.player);
-        if (Reg.type === GameType.Timed) {
+        if (Blackboard.type === GameType.Timed) {
             engine.addSystem(new TimerSystem(this, factory), SystemPriorities.player);
         }
         /**

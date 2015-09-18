@@ -1,5 +1,5 @@
 /**
- * Resources / Globals
+ * Global resource values
  *
  */
 var Entity = ash.core.Entity;
@@ -52,6 +52,21 @@ var SystemPriorities = {
     render0: 8,
     render1: 9
 };
+var rnd = new MersenneTwister();
+var VOLUME_ON = 1.0; // sound dampening factor
+var VOLUME_OFF = 0.0; // sound dampening factor
+var SFX_COUNT = 20; // sound effects
+var GEMSIZE = 48; // Gem size constant in pixels
+var GEMTYPES = [
+    "blue",
+    "cyan",
+    "green",
+    "magenta",
+    "orange",
+    "pink",
+    "red",
+    "yellow"
+];
 /**
  * res - Resources
  *
@@ -86,4 +101,4 @@ var opendyslexic = cc.sys.isNative ? res.opendyslexic : "opendyslexic";
 var helpText = "Match 3 or more gems to score.\nUse arrow keys to rotate and\nmove your gems, down key to drop.\nGems do not have to be in a\na straight line to match.\n\nTimed (FTL) game will auto drop\nyour gems when time runs out.\n\nLogin to save scores and awards\nwith Google Play Games.";
 var creditsText = "SFX by Damaged Panda\nGems by Broos\nGame by Dark Overlord of Data\nArt http://www.nasa.gov\n\nTo Login, for\nleaderboard and achievements,\nplease install Alien Zone\nfrom Google play";
 var googleUrl = 'https://play.google.com/store/apps/details?id=com.darkoverlordofdata.alienzone';
-//# sourceMappingURL=Res.js.map
+//# sourceMappingURL=Globals.js.map

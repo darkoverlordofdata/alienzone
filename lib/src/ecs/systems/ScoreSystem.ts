@@ -33,7 +33,7 @@ class ScoreSystem extends ash.tools.ListIteratingSystem {
     constructor(public parent:cc.Layer, public factory:Entities) {
         super(Nodes.ScoreNode);
         this.nodeUpdateFunction = this.nodeUpdate;
-        Reg.scored.add(this.scored);
+        Blackboard.scored.add(this.scored);
     }
 
     /**
@@ -43,7 +43,7 @@ class ScoreSystem extends ash.tools.ListIteratingSystem {
      */
     public removeFromEngine(engine:ash.core.Engine) {
         super.removeFromEngine(engine);
-        Reg.scored.removeAll();
+        Blackboard.scored.removeAll();
     }
 
     /**
@@ -53,7 +53,7 @@ class ScoreSystem extends ash.tools.ListIteratingSystem {
      * @param {number} time
      */
     public nodeUpdate(node: Nodes.ScoreNode, time: number) {
-        node.score.points = Reg.score;
+        node.score.points = Blackboard.score;
         node.display.graphic.string = `${node.text.value}: ${node.score.points}`;
     }
 
@@ -66,27 +66,30 @@ class ScoreSystem extends ash.tools.ListIteratingSystem {
      */
     private scored = (points: number) => {
 
-        cc.log('powerup = powerup'+(points % Reg.SFX_COUNT));
-        cc.log('resource ='+Reg.res('powerup'+(points % Reg.SFX_COUNT)));
-        if (Reg.sfx) {
-            cc.audioEngine.playEffect(Reg.res('powerup'+(points % Reg.SFX_COUNT)));
+        //cc.log('powerup = powerup'+(points % Blackboard.SFX_COUNT));
+        //cc.log('resource ='+res['powerup'+(points % Blackboard.SFX_COUNT)]);
+        //cc.log('resource ='+Blackboard.res('powerup'+(points % Blackboard.SFX_COUNT)));
+
+        if (Blackboard.sfx) {
+            //cc.audioEngine.playEffect(Blackboard.res('powerup'+(points % Blackboard.SFX_COUNT)));
+          cc.audioEngine.playEffect(res['powerup'+(points % SFX_COUNT)]);
         }
 
         var label = new cc.LabelTTF(''+points, opendyslexic, 48);
-        label.setFontFillColor(this.colors[Reg.rnd.nextInt(3)]);
-        label.setPosition(this.cols[Reg.rnd.nextInt(3)], this.rows[Reg.rnd.nextInt(3)]);
+        label.setFontFillColor(this.colors[rnd.nextInt(3)]);
+        label.setPosition(this.cols[rnd.nextInt(3)], this.rows[rnd.nextInt(3)]);
         this.parent.addChild(label);
 
         var ease;
-        switch(Reg.rnd.nextInt(3)) {
+        switch(rnd.nextInt(3)) {
             case 0:
-                ease  = cc.moveTo((Reg.rnd.nextDouble()*2)+2, cc.p(160, 480)).easing(cc.easeBounceInOut());
+                ease  = cc.moveTo((rnd.nextDouble()*2)+2, cc.p(160, 480)).easing(cc.easeBounceInOut());
                 break;
             case 1:
-                ease  = cc.moveTo((Reg.rnd.nextDouble()*2)+2, cc.p(160, 480)).easing(cc.easeBounceIn());
+                ease  = cc.moveTo((rnd.nextDouble()*2)+2, cc.p(160, 480)).easing(cc.easeBounceIn());
                 break;
             case 2:
-                ease  = cc.moveTo((Reg.rnd.nextDouble()*2)+2, cc.p(160, 480)).easing(cc.easeBounceOut());
+                ease  = cc.moveTo((rnd.nextDouble()*2)+2, cc.p(160, 480)).easing(cc.easeBounceOut());
                 break;
         }
         var done = cc.callFunc(() => {
