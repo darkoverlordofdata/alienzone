@@ -3739,7 +3739,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    * constructor
    */
 
-    ash.tools.ComponentPool = (function() {
+  ash.tools.ComponentPool = (function() {
 
     /**
      * @type {ash.core.Dictionary}

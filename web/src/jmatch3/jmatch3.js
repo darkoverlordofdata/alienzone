@@ -239,19 +239,24 @@
         return lastEmpty;
     };
 
-    Grid.directions = {};
-    Grid.directions["up"] = {};
-    Grid.directions["up"].x = 0;
-    Grid.directions["up"].y =-1;
-    Grid.directions["down"] = {};
-    Grid.directions["down"].x = 0;
-    Grid.directions["down"].y = 1;
-    Grid.directions["right"] = {};
-    Grid.directions["right"].x = 1;
-    Grid.directions["right"].y = 0;
-    Grid.directions["left"] = {};
-    Grid.directions["left"].x = -1;
-    Grid.directions["left"].y = 0;
+    Grid.directions = {
+        up: {
+            x: 0,
+            y: -1
+        },
+        down: {
+            x: 0,
+            y: 1
+        },
+        right: {
+            x: 1,
+            y: 0
+        },
+        left: {
+            x: -1,
+            y: 0
+        }
+    };
     
     function Piece(grid, x, y) {
         this.grid = grid;
@@ -316,7 +321,7 @@
         return deepMatches;
     };
 
-    exports['jMatch3'] = {
+    exports.jMatch3 = {
         Grid: Grid
     };
 

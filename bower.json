@@ -18,6 +18,7 @@
     "tests"
   ],
   "dependencies": {
+    "artemists": "git://github.com/darkoverlordofdata/artemists",
     "ash": "git://github.com/darkoverlordofdata/ash.coffee",
     "localstoragedb": "~2.3.1",
     "jmatch3": "git://github.com/hugeen/jmatch3",
@@ -30,6 +31,7 @@
     "ignore": ["box2d", "closure-compiler", "cocoonjs", "stats.js"],
     "path": "web/src",
     "sources": {
+      "artemists": "packages/artemists/build/artemis.min.js",
       "ash": "packages/ash/build/ash.js",
       "jmatch3": "packages/jmatch3/jmatch3.js",
       "localstoragedb": "packages/localstoragedb/localstoragedb.js",
