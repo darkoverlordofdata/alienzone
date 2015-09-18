@@ -14,6 +14,7 @@
     "jsList" : [
         "src/alienzone/prolog.js",
         "src/jmatch3/jmatch3.js",
+        "src/artemists/artemis.js",
         "src/ash/ash.js",
         "src/tween.ts/tween.min.js",
         "src/localstoragedb/localstoragedb.js",
