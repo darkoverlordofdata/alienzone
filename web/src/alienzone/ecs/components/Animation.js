@@ -27,7 +27,7 @@ var Components;
         }
         Animation.className = 'Animation';
         return Animation;
-    })();
+    }());
     Components.Animation = Animation;
     /**
      *

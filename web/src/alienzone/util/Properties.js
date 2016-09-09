@@ -72,5 +72,5 @@ var Properties = (function () {
         Properties.db.commit();
     };
     return Properties;
-})();
+}());
 //# sourceMappingURL=Properties.js.map

@@ -26,7 +26,7 @@ $ cd alienzone
 $ npm install
 $ npm run get
 $ npm run build
-$ npm start
+$ npm run start
 ```
 d.ts:
 https://github.com/yuanotes/typescript-for-cocos2djs/blob/master/cocos2d-3.0.d.ts

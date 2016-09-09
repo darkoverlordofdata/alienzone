@@ -226,7 +226,7 @@ var Entities = (function () {
         return entity;
     };
     return Entities;
-})();
+}());
 /**
  *
  * @type {cc.Layer}

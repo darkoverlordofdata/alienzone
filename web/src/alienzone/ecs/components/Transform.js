@@ -32,7 +32,7 @@ var Components;
         }
         Transform.className = 'Transform';
         return Transform;
-    })();
+    }());
     Components.Transform = Transform;
     /**
      *

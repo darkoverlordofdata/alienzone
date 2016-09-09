@@ -27,7 +27,7 @@ var Components;
         }
         Level.className = 'Level';
         return Level;
-    })();
+    }());
     Components.Level = Level;
     /**
      *

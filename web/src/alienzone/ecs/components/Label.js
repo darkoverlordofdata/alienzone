@@ -27,7 +27,7 @@ var Components;
         }
         Label.className = 'Label';
         return Label;
-    })();
+    }());
     Components.Label = Label;
     /**
      *

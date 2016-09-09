@@ -30,7 +30,7 @@ var Components;
         }
         Hud.className = 'Hud';
         return Hud;
-    })();
+    }());
     Components.Hud = Hud;
     /**
      *

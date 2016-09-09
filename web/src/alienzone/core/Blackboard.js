@@ -96,5 +96,5 @@ var Blackboard = (function () {
     Blackboard.discoveredGems = [];
     Blackboard.difficulty = 0;
     return Blackboard;
-})();
+}());
 //# sourceMappingURL=Blackboard.js.map

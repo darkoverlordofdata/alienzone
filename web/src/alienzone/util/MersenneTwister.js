@@ -181,7 +181,7 @@ var MersenneTwister = (function () {
     MersenneTwister.UPPER_MASK = -2147483648;
     MersenneTwister.LOWER_MASK = 2147483647;
     return MersenneTwister;
-})();
+}());
 /*
 # These real versions are due to Isaku Wada, 2002/01/09 added
 */

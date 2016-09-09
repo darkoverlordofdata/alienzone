@@ -32,7 +32,7 @@ var Components;
         }
         Puzzle.className = 'Puzzle';
         return Puzzle;
-    })();
+    }());
     Components.Puzzle = Puzzle;
     /**
      *

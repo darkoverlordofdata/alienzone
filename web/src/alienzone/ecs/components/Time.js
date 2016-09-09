@@ -28,7 +28,7 @@ var Components;
         }
         Time.className = 'Time';
         return Time;
-    })();
+    }());
     Components.Time = Time;
     /**
      *

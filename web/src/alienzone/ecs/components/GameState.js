@@ -34,7 +34,7 @@ var Components;
         }
         GameState.className = 'GameState';
         return GameState;
-    })();
+    }());
     Components.GameState = GameState;
     /**
      *

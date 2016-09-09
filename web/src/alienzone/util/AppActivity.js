@@ -27,5 +27,5 @@ var AppActivity = (function () {
     };
     AppActivity.className = "org/cocos2dx/javascript/AppActivity";
     return AppActivity;
-})();
+}());
 //# sourceMappingURL=AppActivity.js.map

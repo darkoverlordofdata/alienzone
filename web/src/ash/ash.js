@@ -742,6 +742,13 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       }
     }
 
+
+    /**
+     * All entities have a name. If no name is set, a default name is used. Names are used to
+     * fetch specific entities from the engine, and can also help to identify an entity when debugging.
+     * @param {string} value
+     */
+
     Entity.prototype.setName = function(value) {
       var previous;
       if (this.name !== value) {
@@ -1453,9 +1460,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    */
 
   ash.core.System = (function() {
-    function System() {
-      this.update = __bind(this.update, this);
-    }
+    function System() {}
 
 
     /**
@@ -2301,7 +2306,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      */
 
     Engine.prototype.getSystem = function(type) {
-      return systemList.get(type);
+      return this.systemList.get(type);
     };
 
 
@@ -2437,7 +2442,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             klass.components = {};
             _ref = klass.prototype;
             for (property in _ref) {
-              if (!__hasProp.call(_ref, property)) continue;
               type = _ref[property];
               klass.components[property] = type;
               klass.prototype[property] = null;
@@ -3673,7 +3677,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      */
 
     FrameTickProvider.prototype.stop = function() {
-      cancelRequestAnimationFrame(this.request);
+      cancelAnimationFrame(this.request);
       this.isPlaying = false;
     };
 
@@ -3685,8 +3689,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
     FrameTickProvider.prototype.dispatchTick = function(timestamp) {
       var frameTime, temp;
-      if (timestamp == null) {
-        timestamp = Date.now();
+      if (!this.isPlaying) {
+        return;
       }
       if (this.showStats) {
         this.begin();
@@ -3695,7 +3699,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       this.previousTime = timestamp;
       frameTime = (timestamp - temp) * 0.001;
       this.dispatch(frameTime);
-      requestAnimationFrame(this.dispatchTick);
+      this.request = requestAnimationFrame(this.dispatchTick);
       if (this.showStats) {
         this.end();
       }
@@ -3739,7 +3743,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    * constructor
    */
 
-    ash.tools.ComponentPool = (function() {
+  ash.tools.ComponentPool = (function() {
 
     /**
      * @type {ash.core.Dictionary}

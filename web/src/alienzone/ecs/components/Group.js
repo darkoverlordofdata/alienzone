@@ -28,7 +28,7 @@ var Components;
         }
         Group.className = 'Group';
         return Group;
-    })();
+    }());
     Components.Group = Group;
     /**
      *

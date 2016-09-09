@@ -6,7 +6,6 @@ build/web
 node_modules
 packages
 tools/compiler.jar
-web/frameworks/cocos2d-html5
 web/frameworks/cocos2d-x
 web/frameworks/runtime-src/Classes
 web/frameworks/runtime-src/proj.android

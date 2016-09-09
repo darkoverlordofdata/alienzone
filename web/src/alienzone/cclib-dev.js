@@ -1,8 +1,7 @@
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 /**
  * Cocos2d-js dev wrappers
@@ -15,7 +14,7 @@ var CCNode = (function (_super) {
     }
     CCNode.prototype._super = function () { };
     return CCNode;
-})(cc.Node);
+}(cc.Node));
 var CCLayer = (function (_super) {
     __extends(CCLayer, _super);
     function CCLayer() {
@@ -23,7 +22,7 @@ var CCLayer = (function (_super) {
     }
     CCLayer.prototype._super = function () { };
     return CCLayer;
-})(cc.Layer);
+}(cc.Layer));
 var CCLayerColor = (function (_super) {
     __extends(CCLayerColor, _super);
     function CCLayerColor() {
@@ -31,7 +30,7 @@ var CCLayerColor = (function (_super) {
     }
     CCLayerColor.prototype._super = function (color, width, height) { };
     return CCLayerColor;
-})(cc.LayerColor);
+}(cc.LayerColor));
 var CCScene = (function (_super) {
     __extends(CCScene, _super);
     function CCScene() {
@@ -39,7 +38,7 @@ var CCScene = (function (_super) {
     }
     CCScene.prototype._super = function () { };
     return CCScene;
-})(cc.Scene);
+}(cc.Scene));
 var CCSprite = (function (_super) {
     __extends(CCSprite, _super);
     function CCSprite() {
@@ -47,5 +46,5 @@ var CCSprite = (function (_super) {
     }
     CCSprite.prototype._super = function (fileName, rect, rotated) { };
     return CCSprite;
-})(cc.Sprite);
+}(cc.Sprite));
 //# sourceMappingURL=cclib-dev.js.map

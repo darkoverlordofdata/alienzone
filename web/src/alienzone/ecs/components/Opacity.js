@@ -27,7 +27,7 @@ var Components;
         }
         Opacity.className = 'Opacity';
         return Opacity;
-    })();
+    }());
     Components.Opacity = Opacity;
     /**
      *

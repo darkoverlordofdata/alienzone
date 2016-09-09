@@ -31,7 +31,7 @@ var Components;
         };
         Audio.className = 'Audio';
         return Audio;
-    })();
+    }());
     Components.Audio = Audio;
     /**
      *

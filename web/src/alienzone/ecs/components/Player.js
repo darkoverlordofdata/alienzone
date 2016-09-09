@@ -28,7 +28,7 @@ var Components;
         }
         Player.className = 'Player';
         return Player;
-    })();
+    }());
     Components.Player = Player;
     /**
      *

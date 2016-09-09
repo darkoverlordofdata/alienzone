@@ -41,7 +41,7 @@ var Components;
         };
         Display.className = 'Display';
         return Display;
-    })();
+    }());
     Components.Display = Display;
     /**
      *

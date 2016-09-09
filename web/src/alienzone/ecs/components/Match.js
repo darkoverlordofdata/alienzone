@@ -38,7 +38,7 @@ var Components;
         }
         Match.className = 'Match';
         return Match;
-    })();
+    }());
     Components.Match = Match;
     /**
      *

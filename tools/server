@@ -10,7 +10,7 @@
 	var gulp = require('gulp');
 	var server = require('gulp-webserver');
 	var logger = require('morgan');
-	var path = process.argv[2] ? process.argv[2] : 'web';
+	var path = process.argv[2] ? process.argv[2] : 'web/publish/html5';
 	
 	if (process.argv[3]) {
 		path = path + "/index_" + process.argv[3] + ".html"

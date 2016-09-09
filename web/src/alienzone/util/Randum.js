@@ -36,5 +36,5 @@ var Randum = (function () {
         return ~~(Math.random() * max);
     };
     return Randum;
-})();
+}());
 //# sourceMappingURL=Randum.js.map
