@@ -32,7 +32,7 @@ https://github.com/yuanotes/typescript-for-cocos2djs/blob/master/cocos2d-3.0.d.t
 
 # GPLv3 License
 
-Copyright (c) 2015 Bruce Davidson <darkoverlordofdata@gmail.com>
+Copyright (c) 2015-2016 Bruce Davidson <darkoverlordofdata@gmail.com>
 
 This file is part of Alien Zone.
 
