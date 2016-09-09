@@ -6,7 +6,6 @@
 
   - Dark Overlord of Data
 
-[![Get it on Google Play](https://raw.githubusercontent.com/darkoverlordofdata/alienzone/master/assets/en_generic_rgb_wo_45.png)] (https://play.google.com/store/apps/details?id=com.darkoverlordofdata.alienzone)
 
 #Alien Zone
 
