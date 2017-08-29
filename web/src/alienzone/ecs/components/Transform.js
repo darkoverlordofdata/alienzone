@@ -30,9 +30,9 @@ var Components;
             this.y = y;
             this.rotation = rotation;
         }
-        Transform.className = 'Transform';
         return Transform;
     }());
+    Transform.className = 'Transform';
     Components.Transform = Transform;
     /**
      *

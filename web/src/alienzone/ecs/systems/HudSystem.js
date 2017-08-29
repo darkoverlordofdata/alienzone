@@ -1,8 +1,13 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 /**
  *--------------------------------------------------------------------+
  * HudSystem.ts
@@ -28,9 +33,10 @@ var HudSystem = (function (_super) {
      * @param {Entities} factory
      */
     function HudSystem(parent, factory) {
-        _super.call(this, Nodes.HudNode);
-        this.parent = parent;
-        this.factory = factory;
+        var _this = _super.call(this, Nodes.HudNode) || this;
+        _this.parent = parent;
+        _this.factory = factory;
+        return _this;
     }
     /**
      *

@@ -25,9 +25,9 @@ var Components;
         function Animation(animation) {
             this.animation = animation;
         }
-        Animation.className = 'Animation';
         return Animation;
     }());
+    Animation.className = 'Animation';
     Components.Animation = Animation;
     /**
      *

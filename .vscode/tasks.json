@@ -1,63 +1,17 @@
 {
     "version": "0.1.0",
-    "command": "npm",
+    "command": "/bin/sh",
+    "cwd": "${workspaceRoot}",
     "isShellCommand": true,
-    "args": ["run"],
+    "args": ["-c"],
+    "showOutput": "always",
+    "echoCommand": true,
+    "suppressTaskName": true,
     "tasks": [
         {
-            "taskName": "_vscode_build",
-            "args": [],
-            "isBuildCommand": true,
-            "problemMatcher": [
-                "$lessCompile",
-                "$tsc",
-                "$jshint"
-            ]
-        },{
+            "isBuildCommand",
             "taskName": "build",
-            "args": [],
-            "isBuildCommand": false,
-            "problemMatcher": []
-        },{
-            "taskName": "clean",
-            "args": [],
-            "isBuildCommand": false,
-            "problemMatcher": []
-        },{
-            "taskName": "closurebuild",
-            "args": [],
-            "isBuildCommand": false,
-            "problemMatcher": []
-        },{
-            "taskName": "config",
-            "args": [],
-            "isBuildCommand": false,
-            "problemMatcher": []
-        },{
-            "taskName": "deploy",
-            "args": [],
-            "isBuildCommand": false,
-            "problemMatcher": []
-        },{
-            "taskName": "jsdoc",
-            "args": [],
-            "isBuildCommand": false,
-            "problemMatcher": []
-        },{
-            "taskName": "manifest",
-            "args": [],
-            "isBuildCommand": false,
-            "problemMatcher": []
-        },{
-            "taskName": "serve",
-            "args": [],
-            "isBuildCommand": false,
-            "problemMatcher": []
-        },{
-            "taskName": "test",
-            "args": [],
-            "isBuildCommand": false,
-            "problemMatcher": []
+            "args": ["tsc"]
         }
     ]
 }

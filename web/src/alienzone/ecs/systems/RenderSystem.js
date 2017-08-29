@@ -1,8 +1,13 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 /**
  *--------------------------------------------------------------------+
  * RenderSystem.ts
@@ -28,10 +33,9 @@ var RenderSystem = (function (_super) {
      * @param {Entities} factory
      */
     function RenderSystem(parent, factory) {
-        var _this = this;
-        _super.call(this);
-        this.parent = parent;
-        this.factory = factory;
+        var _this = _super.call(this) || this;
+        _this.parent = parent;
+        _this.factory = factory;
         /**
          * Add To Display
          *
@@ -39,7 +43,7 @@ var RenderSystem = (function (_super) {
          *
          * @param {Nodes.RenderNode} node
          */
-        this.addToDisplay = function (node) {
+        _this.addToDisplay = function (node) {
             _this.parent.addChild(node.display.graphic);
         };
         /**
@@ -50,10 +54,11 @@ var RenderSystem = (function (_super) {
          *
          * @param {RenderNode} node
          */
-        this.removeFromDisplay = function (node) {
+        _this.removeFromDisplay = function (node) {
             node.display.release();
             _this.parent.removeChild(node.display.graphic);
         };
+        return _this;
     }
     /**
      * Add to Engine

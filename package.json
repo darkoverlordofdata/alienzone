@@ -5,12 +5,10 @@
   "private": true,
   "main": "main.js",
   "scripts": {
-    "_vscode_build": "tsc",
-    "build": "tsc && cocos compile -p web -m release",
+    "_vscode_build": "tsc && tsc -p jsconfig.json",
+    "build": "tsc && tsc -p jsconfig.json",
     "get": "bower-installer",
-    "publish": "gulp publish",
-    "start": "tools/server web/publish/html5",
-    "serve": "tools/server build/web"
+    "publish": "gulp publish"
   },
   "author": "darkoverlordofdata",
   "license": "GPL3",

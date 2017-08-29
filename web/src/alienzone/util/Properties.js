@@ -52,25 +52,25 @@ var Properties = (function () {
             }
         })[0].value;
     };
-    Properties.db = null;
-    Properties.name = "";
-    Properties.properties = null;
-    /*
-     * Set Game Property in local storage
-     *
-     * @param property name
-     * @param property value
-     * @return nothing
-    */
-    Properties.set = function (prop, value) {
-        Properties.db.update("settings", {
-            name: prop
-        }, function (row) {
-            row.value = "" + value;
-            return row;
-        });
-        Properties.db.commit();
-    };
     return Properties;
 }());
+Properties.db = null;
+Properties.name = "";
+Properties.properties = null;
+/*
+ * Set Game Property in local storage
+ *
+ * @param property name
+ * @param property value
+ * @return nothing
+*/
+Properties.set = function (prop, value) {
+    Properties.db.update("settings", {
+        name: prop
+    }, function (row) {
+        row.value = "" + value;
+        return row;
+    });
+    Properties.db.commit();
+};
 //# sourceMappingURL=Properties.js.map

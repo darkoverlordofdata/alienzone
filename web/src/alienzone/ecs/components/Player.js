@@ -26,9 +26,9 @@ var Components;
             if (command === void 0) { command = ''; }
             this.command = command;
         }
-        Player.className = 'Player';
         return Player;
     }());
+    Player.className = 'Player';
     Components.Player = Player;
     /**
      *

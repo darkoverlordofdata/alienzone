@@ -32,9 +32,9 @@ var Components;
             this.lives = lives;
             this.points = points;
         }
-        GameState.className = 'GameState';
         return GameState;
     }());
+    GameState.className = 'GameState';
     Components.GameState = GameState;
     /**
      *

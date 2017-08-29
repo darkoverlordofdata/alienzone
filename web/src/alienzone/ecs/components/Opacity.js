@@ -25,9 +25,9 @@ var Components;
         function Opacity(alpha) {
             this.alpha = alpha;
         }
-        Opacity.className = 'Opacity';
         return Opacity;
     }());
+    Opacity.className = 'Opacity';
     Components.Opacity = Opacity;
     /**
      *

@@ -26,9 +26,9 @@ var Components;
             if (seconds === void 0) { seconds = 0; }
             this.seconds = seconds;
         }
-        Time.className = 'Time';
         return Time;
     }());
+    Time.className = 'Time';
     Components.Time = Time;
     /**
      *

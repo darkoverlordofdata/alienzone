@@ -215,6 +215,7 @@
     "./web/src/alienzone/scenes/Leaderboards.js",
     "./web/src/alienzone/scenes/Menu.js",
     "./web/src/alienzone/core/Globals.js",
-    "./web/src/alienzone/core/Blackboard.js"
+    "./web/src/alienzone/core/Blackboard.js",
+    "./web/main.js"
   ]
 }

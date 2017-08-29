@@ -26,9 +26,9 @@ var Components;
             if (index === void 0) { index = 0; }
             this.index = index;
         }
-        Group.className = 'Group';
         return Group;
     }());
+    Group.className = 'Group';
     Components.Group = Group;
     /**
      *

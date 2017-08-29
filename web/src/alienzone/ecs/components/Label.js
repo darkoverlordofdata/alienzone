@@ -25,9 +25,9 @@ var Components;
         function Label(value) {
             this.value = value;
         }
-        Label.className = 'Label';
         return Label;
     }());
+    Label.className = 'Label';
     Components.Label = Label;
     /**
      *

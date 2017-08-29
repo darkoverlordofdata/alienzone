@@ -83,18 +83,18 @@ var Blackboard = (function () {
                 break;
         }
     };
-    Blackboard.create = new Signal0();
-    Blackboard.drop = new Signal1();
-    Blackboard.reset = new Signal0();
-    Blackboard.scored = new Signal1();
-    Blackboard.timer = new Signal0();
-    Blackboard.upgrade = new Signal1();
-    Blackboard.level = 0;
-    Blackboard.music = false;
-    Blackboard.score = 0;
-    Blackboard.sfx = true;
-    Blackboard.discoveredGems = [];
-    Blackboard.difficulty = 0;
     return Blackboard;
 }());
+Blackboard.create = new Signal0();
+Blackboard.drop = new Signal1();
+Blackboard.reset = new Signal0();
+Blackboard.scored = new Signal1();
+Blackboard.timer = new Signal0();
+Blackboard.upgrade = new Signal1();
+Blackboard.level = 0;
+Blackboard.music = false;
+Blackboard.score = 0;
+Blackboard.sfx = true;
+Blackboard.discoveredGems = [];
+Blackboard.difficulty = 0;
 //# sourceMappingURL=Blackboard.js.map

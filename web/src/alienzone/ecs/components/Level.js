@@ -25,9 +25,9 @@ var Components;
         function Level(value) {
             this.value = value;
         }
-        Level.className = 'Level';
         return Level;
     }());
+    Level.className = 'Level';
     Components.Level = Level;
     /**
      *

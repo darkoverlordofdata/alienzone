@@ -1,8 +1,13 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 /**
  *--------------------------------------------------------------------+
  * TimerSystem.ts
@@ -28,12 +33,11 @@ var TimerSystem = (function (_super) {
      * @param {Entities} factory
      */
     function TimerSystem(parent, factory) {
-        var _this = this;
-        _super.call(this, Nodes.TimerNode);
-        this.parent = parent;
-        this.factory = factory;
-        this.reset = true;
-        this.countdown = 0;
+        var _this = _super.call(this, Nodes.TimerNode) || this;
+        _this.parent = parent;
+        _this.factory = factory;
+        _this.reset = true;
+        _this.countdown = 0;
         /**
          * Countdown Timer
          *
@@ -43,7 +47,7 @@ var TimerSystem = (function (_super) {
          * @param {Nodes.TimerNode} node
          * @param {number} time
          */
-        this.nodeUpdate = function (node, time) {
+        _this.nodeUpdate = function (node, time) {
             if (_this.reset) {
                 _this.countdown = node.time.seconds;
                 _this.reset = false;
@@ -59,8 +63,9 @@ var TimerSystem = (function (_super) {
                 Blackboard.timer.dispatch();
             }
         };
-        this.nodeUpdateFunction = this.nodeUpdate;
+        _this.nodeUpdateFunction = _this.nodeUpdate;
         Blackboard.reset.add(function () { _this.reset = true; });
+        return _this;
     }
     return TimerSystem;
 }(ash.tools.ListIteratingSystem));

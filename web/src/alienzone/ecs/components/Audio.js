@@ -29,9 +29,9 @@ var Components;
         Audio.prototype.play = function (sound) {
             return this.toPlay.push(sound);
         };
-        Audio.className = 'Audio';
         return Audio;
     }());
+    Audio.className = 'Audio';
     Components.Audio = Audio;
     /**
      *

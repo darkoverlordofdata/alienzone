@@ -30,9 +30,9 @@ var Components;
             this.row = row;
             this.init = init;
         }
-        Puzzle.className = 'Puzzle';
         return Puzzle;
     }());
+    Puzzle.className = 'Puzzle';
     Components.Puzzle = Puzzle;
     /**
      *

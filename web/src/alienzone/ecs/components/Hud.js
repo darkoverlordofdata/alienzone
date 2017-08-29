@@ -28,9 +28,9 @@ var Components;
             this.view = view;
             this.leaderboard = leaderboard;
         }
-        Hud.className = 'Hud';
         return Hud;
     }());
+    Hud.className = 'Hud';
     Components.Hud = Hud;
     /**
      *

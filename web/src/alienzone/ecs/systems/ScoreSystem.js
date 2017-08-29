@@ -1,8 +1,13 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 /**
  *--------------------------------------------------------------------+
  * ScoreSystem.ts
@@ -28,17 +33,16 @@ var ScoreSystem = (function (_super) {
      * @param {Entities} factory
      */
     function ScoreSystem(parent, factory) {
-        var _this = this;
-        _super.call(this, Nodes.ScoreNode);
-        this.parent = parent;
-        this.factory = factory;
-        this.colors = [
+        var _this = _super.call(this, Nodes.ScoreNode) || this;
+        _this.parent = parent;
+        _this.factory = factory;
+        _this.colors = [
             new cc.Color(255, 255, 0, 255),
             new cc.Color(255, 0, 255, 255),
             new cc.Color(0, 255, 255, 255)
         ];
-        this.cols = [30, 105, 150];
-        this.rows = [230, 330, 230];
+        _this.cols = [30, 105, 150];
+        _this.rows = [230, 330, 230];
         /**
          * Scored
          *
@@ -46,7 +50,7 @@ var ScoreSystem = (function (_super) {
          *
          * @param {number} points
          */
-        this.scored = function (points) {
+        _this.scored = function (points) {
             //cc.log('powerup = powerup'+(points % Blackboard.SFX_COUNT));
             //cc.log('resource ='+res['powerup'+(points % Blackboard.SFX_COUNT)]);
             //cc.log('resource ='+Blackboard.res('powerup'+(points % Blackboard.SFX_COUNT)));
@@ -75,8 +79,9 @@ var ScoreSystem = (function (_super) {
             }, _this);
             label.runAction(cc.sequence(ease, done));
         };
-        this.nodeUpdateFunction = this.nodeUpdate;
-        Blackboard.scored.add(this.scored);
+        _this.nodeUpdateFunction = _this.nodeUpdate;
+        Blackboard.scored.add(_this.scored);
+        return _this;
     }
     /**
      * Remove Scoring system

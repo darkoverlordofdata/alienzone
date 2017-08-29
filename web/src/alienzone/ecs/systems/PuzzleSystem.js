@@ -1,8 +1,13 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 /**
  *--------------------------------------------------------------------+
  * PuzzleSystem.ts
@@ -53,16 +58,15 @@ var PuzzleSystem = (function (_super) {
      * @param {Entities} factory
      */
     function PuzzleSystem(parent, factory) {
-        var _this = this;
-        _super.call(this);
-        this.parent = parent;
-        this.factory = factory;
+        var _this = _super.call(this) || this;
+        _this.parent = parent;
+        _this.factory = factory;
         /**
          * Receive the gems that were dropped
          *
          * @param {Array<ash.core.Entity>} gems
          */
-        this.dropped = function (gems) {
+        _this.dropped = function (gems) {
             var dropped = 0;
             var height = _this.parent.height;
             for (var row = 1; row >= 0; row--) {
@@ -101,7 +105,7 @@ var PuzzleSystem = (function (_super) {
          * recursively process matching pieces
          *
          */
-        this.handleMatches = function () {
+        _this.handleMatches = function () {
             var piecesToUpgrade;
             /**
              * Add to score for all the matches, them
@@ -148,7 +152,7 @@ var PuzzleSystem = (function (_super) {
          *
          * @param {Array<string>} piecesToUpgrade
          */
-        this.upgrade = function (piecesToUpgrade) {
+        _this.upgrade = function (piecesToUpgrade) {
             var levelUp = false;
             piecesToUpgrade.forEach(function (type) {
                 var upgradeIndex = GEMTYPES.indexOf(type) + 1;
@@ -179,12 +183,13 @@ var PuzzleSystem = (function (_super) {
          * @param {Array<jMatch3.Piece>} matches
          * @param {string} type
          */
-        this.updateScore = function (matches, type) {
+        _this.updateScore = function (matches, type) {
             var points = (GEMTYPES.indexOf(type) + 1) * matches.length * (_this.board + 1);
             Blackboard.updateScore(points);
         };
-        this.board = 0;
-        this.gems = {};
+        _this.board = 0;
+        _this.gems = {};
+        return _this;
     }
     /**
      * Added to Engine

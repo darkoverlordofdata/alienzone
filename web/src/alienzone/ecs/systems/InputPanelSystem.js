@@ -28,11 +28,16 @@
  *</pre>
  *
  */
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 /**
  * Direction
  *
@@ -52,12 +57,11 @@ var InputPanelSystem = (function (_super) {
     * @param {Entities} factory
     */
     function InputPanelSystem(parent, factory) {
-        var _this = this;
-        _super.call(this);
-        this.parent = parent;
-        this.factory = factory;
-        this.gems = []; //  gem entities
-        this.cursors = [
+        var _this = _super.call(this) || this;
+        _this.parent = parent;
+        _this.factory = factory;
+        _this.gems = []; //  gem entities
+        _this.cursors = [
             [[[1, 0], [0, 0]], [[0, 1], [0, 0]], [[0, 0], [0, 1]], [[0, 0], [1, 0]]],
             [[[1, 0], [2, 0]], [[2, 1], [0, 0]], [[0, 2], [0, 1]], [[0, 0], [1, 2]]],
             [[[1, 0], [2, 3]], [[2, 1], [3, 0]], [[3, 2], [0, 1]], [[0, 3], [1, 2]]],
@@ -68,7 +72,7 @@ var InputPanelSystem = (function (_super) {
          * of 2, 3, or 4 gems
          *
          */
-        this.createGems = function () {
+        _this.createGems = function () {
             var i = 1;
             switch (Blackboard.difficulty) {
                 case 0:
@@ -151,7 +155,7 @@ var InputPanelSystem = (function (_super) {
          *
          * @param {Direction} dir
          */
-        this.move = function (dir) {
+        _this.move = function (dir) {
             var left = 5;
             var right = 0;
             _this.gems.forEach(function (gem) {
@@ -177,7 +181,7 @@ var InputPanelSystem = (function (_super) {
          *
          * @param {Direction} dir
          */
-        this.rotate = function (dir) {
+        _this.rotate = function (dir) {
             if (_this.pos >= 5)
                 return;
             _this.rot += (dir === Direction.Left) ? -1 : 1;
@@ -191,7 +195,7 @@ var InputPanelSystem = (function (_super) {
          * update the gem group display
          * @param {boolean} init
          */
-        this.updateGems = function (init) {
+        _this.updateGems = function (init) {
             var cursor = _this.cursors[_this.gems.length - 1][_this.rot];
             for (var row = 0; row < 2; row++) {
                 for (var col = 0; col < 2; col++) {
@@ -222,7 +226,7 @@ var InputPanelSystem = (function (_super) {
          * this moves the gems to the PuzzleSystem
          *
          */
-        this.drop = function () {
+        _this.drop = function () {
             if (_this.dropping)
                 return;
             _this.dropping = true; // disable dropping until this group completes
@@ -265,20 +269,21 @@ var InputPanelSystem = (function (_super) {
          * @param {number} count
          * @return {boolean}
          */
-        this.hasMove = function (count) {
+        _this.hasMove = function (count) {
             // TODO: check if player lost - i.e., has no valid moves
             return false;
         };
         /**
          * Game Over
          */
-        this.gameOver = function () {
+        _this.gameOver = function () {
             var scene = new cc.Scene();
             scene.addChild(new Leaderboards(Blackboard.type, Blackboard.score));
             cc.director.pushScene(new cc.TransitionFade(1.2, scene));
         };
-        this.parent = parent;
-        this.factory = factory;
+        _this.parent = parent;
+        _this.factory = factory;
+        return _this;
     }
     /**
      *

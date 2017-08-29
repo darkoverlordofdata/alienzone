@@ -36,9 +36,9 @@ var Components;
             this.x = col * size;
             this.y = row * size;
         }
-        Match.className = 'Match';
         return Match;
     }());
+    Match.className = 'Match';
     Components.Match = Match;
     /**
      *

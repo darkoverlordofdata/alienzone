@@ -1,8 +1,13 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 /**
  * Cocos2d-js dev wrappers
  * Use for intellisene and typechecking
@@ -10,7 +15,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 var CCNode = (function (_super) {
     __extends(CCNode, _super);
     function CCNode() {
-        _super.apply(this, arguments);
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     CCNode.prototype._super = function () { };
     return CCNode;
@@ -18,7 +23,7 @@ var CCNode = (function (_super) {
 var CCLayer = (function (_super) {
     __extends(CCLayer, _super);
     function CCLayer() {
-        _super.apply(this, arguments);
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     CCLayer.prototype._super = function () { };
     return CCLayer;
@@ -26,7 +31,7 @@ var CCLayer = (function (_super) {
 var CCLayerColor = (function (_super) {
     __extends(CCLayerColor, _super);
     function CCLayerColor() {
-        _super.apply(this, arguments);
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     CCLayerColor.prototype._super = function (color, width, height) { };
     return CCLayerColor;
@@ -34,7 +39,7 @@ var CCLayerColor = (function (_super) {
 var CCScene = (function (_super) {
     __extends(CCScene, _super);
     function CCScene() {
-        _super.apply(this, arguments);
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     CCScene.prototype._super = function () { };
     return CCScene;
@@ -42,7 +47,7 @@ var CCScene = (function (_super) {
 var CCSprite = (function (_super) {
     __extends(CCSprite, _super);
     function CCSprite() {
-        _super.apply(this, arguments);
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     CCSprite.prototype._super = function (fileName, rect, rotated) { };
     return CCSprite;

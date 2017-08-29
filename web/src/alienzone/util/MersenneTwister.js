@@ -175,13 +175,13 @@ var MersenneTwister = (function () {
         b = this.genrand_int32() >>> 6;
         return (a * 67108864.0 + b) * 1.11022302462515654e-16;
     };
-    MersenneTwister.N = 624;
-    MersenneTwister.M = 397;
-    MersenneTwister.MATRIX_A = -1727483681;
-    MersenneTwister.UPPER_MASK = -2147483648;
-    MersenneTwister.LOWER_MASK = 2147483647;
     return MersenneTwister;
 }());
+MersenneTwister.N = 624;
+MersenneTwister.M = 397;
+MersenneTwister.MATRIX_A = -1727483681;
+MersenneTwister.UPPER_MASK = -2147483648;
+MersenneTwister.LOWER_MASK = 2147483647;
 /*
 # These real versions are due to Isaku Wada, 2002/01/09 added
 */

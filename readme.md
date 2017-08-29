@@ -12,10 +12,21 @@
 Created With [ash.coffee](https://github.com/darkoverlordofdata/ash.coffee), 
 jMatch3, 
 localstorageDb, 
-and Cocos2d-js
+and Cocos2d-JS
 
 
 Play the online demo at [https://darkoverlordofdata.com/alienzone](example.html)
+
+## Notes
+
+Originally created to run in cocoonjs and integrated with Google Play. 
+I no longer like the native/script hybrids like cordova. 
+
+This also uses cocos2d. I've stopped using cocos2d, there is too much churn. 
+So this project is frozen at version 3.9, with the correct library embedded in web folder.
+
+This is a puzzle game, so it is still a great excercise for leaderboard usage, which is why I'm digging into it again. That, and I think it can still be polished up and made shiny!
+
 
 # Install
 
@@ -24,9 +35,10 @@ $ git clone https://github.com/darkoverlordofdata/alienzone.git
 $ cd alienzone
 $ npm install
 $ npm run get
-$ npm run build
-$ npm run start
+$ cd web && tsc && tsc -p jsconfig.json && uglifyjs -c -m -o alienzone.min.js
 ```
+
+
 d.ts:
 https://github.com/yuanotes/typescript-for-cocos2djs/blob/master/cocos2d-3.0.d.ts
 

@@ -25,7 +25,7 @@ var AppActivity = (function () {
     AppActivity.showAlertDialog = function (title, message) {
         return jsb.reflection.callStaticMethod(AppActivity.className, "showAlertDialog", "(Ljava/lang/String;Ljava/lang/String;)V", title, message);
     };
-    AppActivity.className = "org/cocos2dx/javascript/AppActivity";
     return AppActivity;
 }());
+AppActivity.className = "org/cocos2dx/javascript/AppActivity";
 //# sourceMappingURL=AppActivity.js.map

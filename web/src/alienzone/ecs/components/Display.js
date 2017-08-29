@@ -39,9 +39,9 @@ var Components;
                 this.graphic.release();
             }
         };
-        Display.className = 'Display';
         return Display;
     }());
+    Display.className = 'Display';
     Components.Display = Display;
     /**
      *

@@ -24,10 +24,9 @@
     "tween.ts": "~0.1.2"
   },
   "devDependencies": {
-    "closure-compiler": "~0.2.7"
   },
   "install": {
-    "ignore": ["box2d", "closure-compiler", "cocoonjs", "stats.js"],
+    "ignore": [],
     "path": "web/src",
     "sources": {
       "ash": "packages/ash/build/ash.js",
